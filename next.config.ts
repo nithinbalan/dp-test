@@ -17,7 +17,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone",
+  output: 'standalone',
   poweredByHeader: false,
   typedRoutes: true,
   // Lets the page-smoke-test build into its own output dir (src/test/integration/pages.test.ts)
