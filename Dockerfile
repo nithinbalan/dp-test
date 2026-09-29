@@ -36,6 +36,16 @@ COPY . .
 
 ENV NODE_ENV=production
 
+# Build-time environment variables.
+# These are supplied by GitHub Actions.
+ARG DATABASE_URL
+ARG APP_BASE_DOMAIN
+ARG AUTH_SECRET
+
+ENV DATABASE_URL=$DATABASE_URL
+ENV APP_BASE_DOMAIN=$APP_BASE_DOMAIN
+ENV AUTH_SECRET=$AUTH_SECRET
+
 RUN pnpm build
 
 
@@ -54,7 +64,7 @@ ENV HOSTNAME=0.0.0.0
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-# Only copy public if the project actually has it
+# Public assets
 COPY --from=builder /app/public ./public
 
 EXPOSE 3000
