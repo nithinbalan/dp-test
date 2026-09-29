@@ -1,0 +1,47 @@
+{
+  "genericEmptyLabel": "لا يوجد شيء هنا بعد",
+
+  "collectionLabel": "مركز جمع البيانات",
+  "collectionRefTag": "JDP-DCH",
+  "collectionDescription": "لا توجد نقاط جمع متصلة. اتصل بمصدر لبدء سحب البيانات المنظّمة.",
+  "collectionCta": "اتصل بمصدر",
+  "collectionCaption": "يغذي سجل المعالجة وسجل الموافقات",
+
+  "consentLabel": "سجل الموافقات",
+  "consentRefTag": "JDP-CNS",
+  "consentDescription": "السجل فارغ. بمجرد تفعيل نقطة جمع، يُسجَّل هنا كل حدث موافقة — غير قابل للتعديل وقابل للتصدير.",
+  "consentCta": "إعداد نقطة جمع",
+  "consentCaption": "غير قابل للتعديل · قابل للتصدير",
+
+  "dsrLabel": "طلبات أصحاب البيانات",
+  "dsrRefTag": "JDP-DSR",
+  "dsrDescription": "لا توجد طلبات بعد. انشر بوابة استقبال أو اربط بريدًا إلكترونيًا ليتمكن أصحاب البيانات من التواصل معك.",
+  "dsrCta": "نشر بوابة الاستقبال",
+  "dsrSecondaryCta": "ربط البريد الإلكتروني",
+  "dsrCaption": "مؤقّتات الاتفاقية · التحقق من الهوية",
+
+  "breachLabel": "إدارة الاختراقات",
+  "breachRefTag": "JDP-BRC",
+  "breachDescription": "لا توجد حوادث — لنُبقِ الأمر كذلك. أعدّ خطة استجابة قبل أن تحتاجها.",
+  "breachCta": "إعداد خطة الاستجابة",
+  "breachSecondaryCta": "تنفيذ تدريب",
+  "breachCaption": "إشعار المجلس خلال 72 ساعة",
+
+  "transfersLabel": "النقل عبر الحدود",
+  "transfersRefTag": "JDP-XBT",
+  "transfersDescription": "لا توجد عمليات نقل مسجّلة. أضف عملية نقل لبدء تتبع تدفقات البيانات عبر الحدود وفق المادة 16.",
+  "transfersCta": "إضافة عملية نقل",
+  "transfersCaption": "يراقب إشعارات المادة 16",
+
+  "thirdPartyLabel": "مخاطر الأطراف الثالثة",
+  "thirdPartyRefTag": "JDP-TPR",
+  "thirdPartyDescription": "لم يتم تقييم أي طرف ثالث بعد. ابدأ بالموردين الذين يتعاملون مع أكبر قدر من البيانات الشخصية.",
+  "thirdPartyCta": "تقييم طرف ثالث",
+  "thirdPartyCaption": "سجل عقود المادة 8(2)",
+
+  "issuesLabel": "سجل المشكلات",
+  "issuesRefTag": "JDP-ISS",
+  "issuesDescription": "لا توجد مشكلات مفتوحة. تظهر المشكلات هنا بمجرد أن يجد تقييم فجوات أو اختبار ضوابط أو تقييم أثر شيئًا يستدعي المعالجة.",
+  "issuesCta": "تشغيل تقييم الفجوات",
+  "issuesCaption": "يغذي درجة لوحة التحكم"
+}

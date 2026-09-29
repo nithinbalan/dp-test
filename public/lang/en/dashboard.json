@@ -1,0 +1,10 @@
+{
+  "label": "Dashboard",
+  "refTag": "JDP-DASH",
+  "overviewLabel": "Overview",
+  "description": "Your DPDP readiness score, penalty exposure, and everything needing attention — once your data foundation is set up.",
+  "emptyTitle": "No readiness score yet",
+  "emptyDescription": "Complete the guided gap assessment to generate your compliance baseline, readiness score, and statutory exposure view.",
+  "cta": "Start guided assessment",
+  "moduleReference": "aggregates all modules"
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "./locales.schema.json",
+  "note": "THE single source of truth for supported locales, their writing direction, and how a request's locale is resolved. Hand-maintained \u2014 this is product policy. `pnpm ds:i18n` generates the locale types, the message types, and the per-language font binding from it, and validates that every locale's message catalogue is complete.",
+  "defaultLocale": "en",
+  "locales": {
+    "en": {
+      "name": "English",
+      "nativeName": "English",
+      "dir": "ltr",
+      "fontFamily": "sans",
+      "numberingSystem": "latn"
+    },
+    "ar": {
+      "name": "Arabic",
+      "nativeName": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
+      "dir": "rtl",
+      "fontFamily": "arabic",
+      "numberingSystem": "latn",
+      "note": "numberingSystem 'latn' shows Western digits, which most Gulf business software expects. Switch to 'arab' for Eastern Arabic numerals if the market wants them \u2014 it is a product decision, not a technical one."
+    },
+    "de": {
+      "name": "German",
+      "nativeName": "Deutsch",
+      "dir": "ltr",
+      "fontFamily": "sans",
+      "numberingSystem": "latn",
+      "note": "German runs ~30% longer than English. Every component needs a long-content story or German will break fixed-width layouts."
+    }
+  },
+  "resolution": {
+    "strategy": "cookie",
+    "note": "'path' (/de/settings) | 'cookie' (user preference, no URL change) | 'header' (Accept-Language only). Cookie: the switcher is a client control, not a navigation — no separate route per locale, and the cookie is non-httpOnly so both middleware and the switcher can read/write it. Middleware also forwards the resolved locale on `headerName` for this same request, so a Server Component sees the right locale on the very first paint even before the Set-Cookie reaches the browser. Change this one value and middleware follows.",
+    "cookieName": "jethur-locale",
+    "headerName": "x-jethur-locale",
+    "prefixDefaultLocale": false
+  }
+}

@@ -1,0 +1,15 @@
+/* GENERATED from design-system/locales.json by `pnpm ds:i18n`. Do not edit. */
+/* Per-language typography. Bound by :lang() so it follows the `lang` attribute,
+   which is also what screen readers and hyphenation use. */
+
+:root {
+  --s-font-family: var(--p-font-family-sans);
+}
+
+:root:lang(ar) {
+  --s-font-family: var(--p-font-family-arabic);
+}
+
+:root:lang(de) {
+  --s-font-family: var(--p-font-family-sans);
+}

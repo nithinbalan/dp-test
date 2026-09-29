@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Design System Manifest",
+  "type": "object",
+  "required": ["version", "contract", "components"],
+  "properties": {
+    "version": { "type": "integer" },
+    "generatedAt": { "type": ["string", "null"] },
+    "note": { "type": "string" },
+    "contract": { "type": "object" },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "tier", "path", "description", "props"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[A-Z][A-Za-z0-9]*$" },
+          "tier": { "enum": ["atoms", "molecules", "organisms", "templates"] },
+          "path": { "type": "string" },
+          "importPath": { "type": "string" },
+          "description": { "type": "string", "minLength": 10 },
+          "status": { "enum": ["stable", "beta", "deprecated"] },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "props": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "type", "required"],
+              "properties": {
+                "name": { "type": "string" },
+                "type": { "type": "string" },
+                "required": { "type": "boolean" },
+                "default": { "type": ["string", "null"] },
+                "description": { "type": "string" }
+              }
+            }
+          },
+          "hasStory": { "type": "boolean" },
+          "hasTest": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

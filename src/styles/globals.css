@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+
+/* All three are GENERATED from design-system/theme.json by `pnpm ds:tokens`.
+   To change any visual value — including the brand hue — edit theme.json. */
+@import '../../design-system/tokens/primitive.css';
+@import '../../design-system/tokens/semantic.css';
+@import '../../design-system/tokens/locale.css';
+@import '../../design-system/tokens/tailwind-theme.css';
+
+/* Element defaults live in `base` so utilities can override them. Unlayered CSS beats
+   every Tailwind layer regardless of specificity: an unlayered `:focus-visible`
+   defeated `outline-none` and drew a second box inside every Input and Select ring.
+   Guarded by globals.test.ts. */
+@layer base {
+  body {
+    background-color: var(--s-bg-canvas);
+    color: var(--s-fg-default);
+    /* Follows the `lang` attribute — see design-system/tokens/locale.css. */
+    font-family: var(--s-font-family);
+    font-size: var(--text-md);
+    line-height: var(--p-line-height-normal);
+  }
+
+  /* One focus style for the whole app, from tokens. */
+  :focus-visible {
+    outline: var(--s-focus-ring-width) solid var(--s-border-focus);
+    outline-offset: var(--s-focus-ring-offset);
+  }
+}
+
+/* Thin scrollbar for an independently-scrolling region, matching the
+   prototype's own `::-webkit-scrollbar` treatments (`.sidebar`, `.cs-nav`).
+   Firefox uses the standard `scrollbar-*` properties; Chromium/Safari use the
+   vendor pseudo-elements, both from tokens. `-inverse` is for dark surfaces
+   (the app sidebar), `-surface` for light ones (e.g. Configuration Studio's
+   section nav). */
+.scrollbar-inverse,
+.scrollbar-surface {
+  scrollbar-width: thin;
+}
+.scrollbar-inverse {
+  scrollbar-color: var(--s-border-inverse) transparent;
+}
+.scrollbar-surface {
+  scrollbar-color: var(--s-border-default) transparent;
+}
+.scrollbar-inverse::-webkit-scrollbar,
+.scrollbar-surface::-webkit-scrollbar {
+  width: 9px;
+}
+.scrollbar-inverse::-webkit-scrollbar-thumb {
+  background-color: var(--s-border-inverse);
+  border-radius: var(--s-radius-pill);
+}
+.scrollbar-surface::-webkit-scrollbar-thumb {
+  background-color: var(--s-border-default);
+  border-radius: var(--s-radius-pill);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

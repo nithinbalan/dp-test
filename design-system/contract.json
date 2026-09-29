@@ -1,0 +1,174 @@
+{
+  "$schema": "./contract.schema.json",
+  "note": "THE single source of truth for the component API contract. Hand-maintained — this is policy, not derivable from code. Everything that DISPLAYS it (manifest.json contract block, the tables in docs/COMPONENT_CONTRACT.md, prompt envelopes) is generated from this file. Never edit those copies.",
+  "reservedProps": {
+    "variant": {
+      "type": "'solid' | 'soft' | 'outline' | 'ghost' | 'link' | 'inline' | 'trigger' | 'joined' | 'split'",
+      "meaning": "visual weight / emphasis. `inline` and `trigger` are presentation modes (as opposed to weight) used by pickers with more than one interaction shape — e.g. PeoplePicker's pill-and-search vs. combobox-button-and-popover. `joined`/`split` are SegmentedControl's container treatment: one shared bordered pill with no gaps between segments, vs. each segment as its own bordered button with a gap — used when a multi-tone answer control (Yes/Partly/No/Not sure) needs each choice to read as a standalone decision rather than one rung of a single switch."
+    },
+    "size": {
+      "type": "'none' | '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+      "meaning": "scale. `none` means the property this scales is switched off entirely (a Card with no padding, so a table can meet its edges) — it is not a synonym for `xs`.",
+      "default": "md"
+    },
+    "tone": {
+      "type": "'neutral' | 'muted' | 'subtle' | 'strong' | 'inverse' | 'current' | 'brand' | 'accent' | 'success' | 'warning' | 'danger' | 'info'",
+      "meaning": "semantic intent. Two families, and mixing them up is the mistake to watch for. SEMANTIC: brand, accent, success, warning, danger, info — what the thing MEANS. `accent` is the lime highlight: deliberate emphasis only, never a second primary. EMPHASIS: neutral (default weight), muted, subtle, strong, inverse (on a dark surface), current (inherit the surrounding colour) — how loud the thing is when it means nothing in particular. There is no `default`: `neutral` is the default, and having both would be one concept with two names.",
+      "default": "neutral"
+    },
+    "isDisabled": {
+      "type": "boolean",
+      "meaning": "interaction disabled"
+    },
+    "isLoading": {
+      "type": "boolean",
+      "meaning": "async work in flight"
+    },
+    "isInvalid": {
+      "type": "boolean",
+      "meaning": "failed validation"
+    },
+    "isRequired": {
+      "type": "boolean",
+      "meaning": "required field"
+    },
+    "isReadOnly": {
+      "type": "boolean",
+      "meaning": "visible, not editable"
+    },
+    "fullWidth": {
+      "type": "boolean",
+      "meaning": "fills container inline axis"
+    },
+    "startSlot": {
+      "type": "ReactNode",
+      "meaning": "leading content"
+    },
+    "endSlot": {
+      "type": "ReactNode",
+      "meaning": "trailing content"
+    },
+    "label": {
+      "type": "string",
+      "meaning": "primary visible text"
+    },
+    "description": {
+      "type": "string",
+      "meaning": "secondary helper text"
+    },
+    "errorMessage": {
+      "type": "string",
+      "meaning": "shown when isInvalid"
+    },
+    "onValueChange": {
+      "type": "(value: T) => void",
+      "meaning": "semantic change, passes value not event"
+    },
+    "onOpenChange": {
+      "type": "(open: boolean) => void",
+      "meaning": "disclosure state"
+    },
+    "asChild": {
+      "type": "boolean",
+      "meaning": "render as child element"
+    },
+    "className": {
+      "type": "string",
+      "meaning": "merged via cn(), always accepted"
+    },
+    "testId": {
+      "type": "string",
+      "meaning": "maps to data-testid"
+    },
+    "shape": {
+      "type": "'rounded' | 'circle' | 'square'",
+      "meaning": "outline of a container whose silhouette is meaningful (avatar, icon button). NOT visual weight — that is `variant`.",
+      "default": "rounded"
+    },
+    "orientation": {
+      "type": "'horizontal' | 'vertical'",
+      "meaning": "layout axis. Resolves logically, so `horizontal` follows `dir`.",
+      "default": "horizontal"
+    },
+    "value": {
+      "type": "T",
+      "meaning": "controlled value; pairs with `onValueChange`"
+    },
+    "defaultValue": {
+      "type": "T",
+      "meaning": "uncontrolled initial value"
+    },
+    "isSelected": {
+      "type": "boolean",
+      "meaning": "controlled on/off for a two-state control (switch, chip, checkbox)"
+    },
+    "messages": {
+      "type": "Partial<TMessages>",
+      "meaning": "translatable copy. Defaults are English; the prop is what makes the component localisable at all."
+    }
+  },
+  "bannedPropNames": [
+    "kind",
+    "appearance",
+    "color",
+    "colour",
+    "theme",
+    "status",
+    "intent",
+    "scale",
+    "sizing",
+    "disabled",
+    "loading",
+    "invalid",
+    "required",
+    "readOnly",
+    "leftIcon",
+    "rightIcon",
+    "prefix",
+    "suffix",
+    "onChangeValue",
+    "text",
+    "title",
+    "caption",
+    "mt",
+    "mb",
+    "ml",
+    "mr",
+    "margin",
+    "spacing",
+    "inputProps",
+    "wrapperProps",
+    "containerProps"
+  ],
+  "bannedPropNotes": {
+    "type": "Legal ONLY as a native DOM attribute passthrough (input/button type). Never for visual style — use `variant`.",
+    "disabled": "Use `isDisabled`. Native `disabled` still reaches the DOM element via prop spreading."
+  },
+  "booleanPrefixes": ["is", "has", "can", "should", "allow"],
+  "tiers": ["atoms", "molecules", "organisms", "templates", "pages"],
+  "tierRules": {
+    "direction": "atoms <- molecules <- organisms <- templates <- pages",
+    "atoms": "No other components. No app state. No data fetching. No external margins.",
+    "molecules": "Composes atoms only. Local UI state allowed. No data fetching.",
+    "organisms": "Composes molecules/atoms. May consume context. Receives data, does not fetch (unless RSC).",
+    "templates": "Layout and ReactNode slots only. Zero business logic.",
+    "pages": "src/app only. The only tier that fetches data or knows about routing."
+  },
+  "valueRules": {
+    "forbidden": [
+      "hex colors",
+      "rgb()/hsl()/oklch() literals",
+      "Tailwind arbitrary values e.g. text-[#fff] or p-[13px]",
+      "raw px values",
+      "inline style for token-covered properties"
+    ],
+    "required": "All visual values resolve through semantic tokens in design-system/tokens/semantic.css"
+  },
+  "requiredFiles": [
+    "<Name>.tsx",
+    "<Name>.types.ts",
+    "<Name>.stories.tsx",
+    "<Name>.test.tsx",
+    "index.ts"
+  ]
+}

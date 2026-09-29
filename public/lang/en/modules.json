@@ -1,0 +1,47 @@
+{
+  "genericEmptyLabel": "Nothing here yet",
+
+  "collectionLabel": "Data Collection Hub",
+  "collectionRefTag": "JDP-DCH",
+  "collectionDescription": "No collection points connected. Connect a source to start pulling structured data.",
+  "collectionCta": "Connect a source",
+  "collectionCaption": "Feeds RoPA & Consent Ledger",
+
+  "consentLabel": "Consent Ledger",
+  "consentRefTag": "JDP-CNS",
+  "consentDescription": "The ledger is empty. Once a collection point is live, every consent event is recorded here — immutable and exportable.",
+  "consentCta": "Set up a collection point",
+  "consentCaption": "Immutable · exportable",
+
+  "dsrLabel": "DSR Requests",
+  "dsrRefTag": "JDP-DSR",
+  "dsrDescription": "No requests yet. Publish an intake portal or connect a mailbox so data principals can reach you.",
+  "dsrCta": "Publish intake portal",
+  "dsrSecondaryCta": "Connect mailbox",
+  "dsrCaption": "SLA timers · identity verification",
+
+  "breachLabel": "Breach Management",
+  "breachRefTag": "JDP-BRC",
+  "breachDescription": "No incidents — let's keep it that way. Set up a response playbook before you need one.",
+  "breachCta": "Set up response playbook",
+  "breachSecondaryCta": "Run a drill",
+  "breachCaption": "Board notification within 72 hours",
+
+  "transfersLabel": "Cross-Border Transfers",
+  "transfersRefTag": "JDP-XBT",
+  "transfersDescription": "No transfers recorded. Add a transfer to start tracking cross-border data flows against s.16.",
+  "transfersCta": "Add transfer",
+  "transfersCaption": "Watches for s.16 notifications",
+
+  "thirdPartyLabel": "Third-Party Risk",
+  "thirdPartyRefTag": "JDP-TPR",
+  "thirdPartyDescription": "No third parties assessed yet. Start with the vendors who touch the most personal data.",
+  "thirdPartyCta": "Assess a third party",
+  "thirdPartyCaption": "s.8(2) contract register",
+
+  "issuesLabel": "Issue Register",
+  "issuesRefTag": "JDP-ISS",
+  "issuesDescription": "No open issues. Issues appear here once a Gap Assessment, Control test, or DPIA finds something to fix.",
+  "issuesCta": "Run the gap assessment",
+  "issuesCaption": "Feeds the dashboard score"
+}

@@ -1,0 +1,8 @@
+.next
+node_modules
+storybook-static
+pnpm-lock.yaml
+coverage
+
+# SQL is formatted by hand; prettier has no parser for it
+db/**/*.sql

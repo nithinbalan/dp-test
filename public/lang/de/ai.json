@@ -1,0 +1,16 @@
+{
+  "label": "Jethur AI",
+  "refTag": "JDP-AI",
+  "description": "Fragen Sie zum DPDP Act oder zu dem, was Jethur in Ihrem Workspace gefunden hat.",
+  "assistantName": "Jethur AI",
+  "inputLabel": "Jethur AI fragen",
+  "inputPlaceholder": "Stellen Sie eine Frage zum DPDP Act…",
+  "sendLabel": "Senden",
+  "respondingLabel": "Jethur AI antwortet…",
+  "welcomeMessage": "Fragen Sie mich zu Hinweis, Einwilligung, Meldefristen bei Vorfällen, DSFA, Aufbewahrung, Rechten oder Bußgeldern nach dem DPDP Act.",
+  "suggestion1": "Was gilt als Verletzung des Schutzes personenbezogener Daten?",
+  "suggestion2": "Wie funktioniert der Widerruf der Einwilligung?",
+  "suggestion3": "Wann ist eine DSFA erforderlich?",
+  "suggestion4": "Was muss innerhalb von 72 Stunden nach einem Vorfall geschehen?",
+  "disclaimer": "Antworten stammen aus einer festen Wissensdatenbank für diese Vorschau und sind keine Rechtsberatung."
+}

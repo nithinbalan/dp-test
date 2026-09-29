@@ -1,0 +1,13 @@
+# Fully generated — safe to collapse in diffs and exclude from language stats.
+design-system/manifest.json         linguist-generated=true
+design-system/tokens/*.css          linguist-generated=true
+docs/system/MAP.md                  linguist-generated=true
+docs/adr/index.md                   linguist-generated=true
+src/shared/types/tokens.ts          linguist-generated=true
+src/shared/types/locale.ts          linguist-generated=true
+src/shared/types/messages.ts        linguist-generated=true
+src/shared/types/catalogues.ts      linguist-generated=true
+
+# NOT marked generated: src/components/*/CLAUDE.md and src/server/*/CLAUDE.md carry
+# a hand-written section below the GENERATED marker — collapsing them would hide
+# exactly the human-authored content reviewers need to see in a diff.

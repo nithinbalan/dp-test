@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: jethur_test
+        options: >-
+          --health-cmd pg_isready --health-interval 10s
+          --health-timeout 5s --health-retries 5
+        ports: ['5432:5432']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Format
+        run: pnpm format:check
+
+      - name: Lint (includes token, tier, isolation and error-handling rules)
+        run: pnpm lint
+
+      - name: Types
+        run: pnpm typecheck
+
+      # Drift gate: regenerate every context artifact in memory and diff against
+      # what was committed. Writes nothing, so it cannot mask what it finds.
+      # Also re-checks WCAG contrast for every declared pair, in both themes:
+      # a palette change that breaks legibility fails here rather than shipping.
+      - name: Tokens, manifest and context match source
+        run: pnpm ctx:drift
+
+      # Completeness gate: every domain, export and component must carry context.
+      # This is what stops the app outgrowing its documentation.
+      - name: Context is complete
+        run: pnpm ctx:check
+
+      - name: Design system contract
+        run: pnpm ds:check
+
+      - name: Design system structure
+        run: pnpm ds:tiers
+
+      # Physical direction properties break RTL invisibly to anyone who cannot
+      # read Arabic. ESLint covers TS/TSX; this covers hand-written CSS.
+      - name: RTL safety
+        run: pnpm ds:rtl
+
+      # Isolation tests run against a REAL Postgres. Mocks cannot prove
+      # connection-level behaviour, and that is the actual risk.
+      # DATABASE_MIGRATION_URL: the CI Postgres service has one admin role, so this
+      # is the same connection as DATABASE_URL here — unlike prod, which never grants
+      # request-handling code the role that can CREATE SCHEMA (docs/WORKSPACE_ISOLATION.md
+      # §6). src/server/workspace/__tests__/isolation.test.ts uses it to bring the
+      # fresh database to the current schema version and provision its two fixture
+      # workspaces before any test runs.
+      - name: Tests
+        run: pnpm test
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/jethur_test
+          DATABASE_MIGRATION_URL: postgres://postgres:postgres@localhost:5432/jethur_test
+
+      - name: Build
+        run: pnpm build
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/jethur_test
+          APP_BASE_DOMAIN: localhost:3000
+          AUTH_SECRET: ci_only_secret_at_least_32_characters_long
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      # Prod deps gate the build — this is what actually ships and runs against
+      # real traffic. Dev tooling (Storybook, etc.) is audited too but doesn't
+      # block: it never ships, so an unpatched transitive CVE there is not a
+      # user-facing risk. See docs/SECURITY_HYGIENE.md §7.
+      - run: pnpm audit --audit-level high --prod
+      - run: pnpm audit --audit-level high --dev || true

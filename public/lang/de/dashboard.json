@@ -1,0 +1,10 @@
+{
+  "label": "Dashboard",
+  "refTag": "JDP-DASH",
+  "overviewLabel": "Übersicht",
+  "description": "Fasst jedes Modul in einer Übersicht zur Bereitschaft zusammen.",
+  "emptyTitle": "Noch kein Bereitschafts-Score",
+  "emptyDescription": "Schließen Sie die geführte Lückenanalyse ab, um Ihre Compliance-Basis, den Bereitschafts-Score und die gesetzliche Risikoübersicht zu erstellen.",
+  "cta": "Geführte Bewertung starten",
+  "moduleReference": "fasst alle Module zusammen"
+}

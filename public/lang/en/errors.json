@@ -1,0 +1,7 @@
+{
+  "title": "Something went wrong",
+  "body": "Please try again. If it keeps happening, contact support.",
+  "retry": "Try again",
+  "notFoundTitle": "Not found",
+  "notFoundBody": "That page does not exist."
+}

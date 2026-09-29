@@ -1,0 +1,16 @@
+{
+  "label": "Jethur AI",
+  "refTag": "JDP-AI",
+  "description": "اسأل عن قانون DPDP، أو عمّا وجده Jethur في مساحة عملك.",
+  "assistantName": "Jethur AI",
+  "inputLabel": "اسأل Jethur AI",
+  "inputPlaceholder": "اطرح سؤالًا عن قانون DPDP…",
+  "sendLabel": "إرسال",
+  "respondingLabel": "Jethur AI يجيب…",
+  "welcomeMessage": "اسألني عن الإشعار أو الموافقة أو مواعيد الإبلاغ عن الاختراقات أو تقييم الأثر أو الاحتفاظ أو الحقوق أو الغرامات بموجب قانون DPDP.",
+  "suggestion1": "ما الذي يُعد اختراقًا للبيانات الشخصية؟",
+  "suggestion2": "كيف يعمل سحب الموافقة؟",
+  "suggestion3": "متى يكون تقييم الأثر مطلوبًا؟",
+  "suggestion4": "ما الذي يجب أن يحدث خلال 72 ساعة من وقوع اختراق؟",
+  "disclaimer": "الإجابات مستمدة من قاعدة معرفة ثابتة لهذا العرض التجريبي وليست استشارة قانونية."
+}

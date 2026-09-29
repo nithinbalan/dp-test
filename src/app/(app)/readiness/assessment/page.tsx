@@ -1,0 +1,77 @@
+import { getTranslator } from '@shared/lib';
+import { getRequestLocale } from '@shared/lib/request-locale';
+import { AssessmentWizard } from './AssessmentWizard';
+import type { AssessmentMessages } from './AssessmentMessages';
+
+export default async function AssessmentPage() {
+  const locale = await getRequestLocale();
+  const t = getTranslator(locale, 'readiness');
+
+  const messages: AssessmentMessages = {
+    wizardTitle: t('wizardTitle'),
+    wizardStepperLabel: t('wizardStepperLabel'),
+    wizardBack: t('wizardBack'),
+    wizardSaveExit: t('wizardSaveExit'),
+    wizardNext: t('wizardNext'),
+    wizardSubmit: t('wizardSubmit'),
+    wizardGenerating: t('wizardGenerating'),
+    wizardProgressLabel: t('wizardProgressLabel'),
+    wizardProgress: t('wizardProgress'),
+    wizardJumpUnanswered: t('wizardJumpUnanswered'),
+    wizardLeftToUnlock: t('wizardLeftToUnlock'),
+    toastScopeRequired: t('toastScopeRequired'),
+    toastSavedProgress: t('toastSavedProgress'),
+    toastAssessmentComplete: t('toastAssessmentComplete'),
+    demoBarTitle: t('demoBarTitle'),
+    demoBarBadge: t('demoBarBadge'),
+    demoBarBody: t('demoBarBody'),
+    demoSelectLabel: t('demoSelectLabel'),
+    demoFillCta: t('demoFillCta'),
+    demoGenerateCta: t('demoGenerateCta'),
+    demoFilledToast: t('demoFilledToast'),
+    demoGeneratingToast: t('demoGeneratingToast'),
+    profileHeading: t('profileHeading'),
+    profileIntro: t('profileIntro'),
+    fieldEntityName: t('fieldEntityName'),
+    fieldCompletedBy: t('fieldCompletedBy'),
+    fieldCompletedByHint: t('fieldCompletedByHint'),
+    fieldCompletedBySearchPlaceholder: t('fieldCompletedBySearchPlaceholder'),
+    fieldCompletedByEscHint: t('fieldCompletedByEscHint'),
+    fieldCompletedByFooterLabel: t('fieldCompletedByFooterLabel'),
+    fieldCompletedByManageLabel: t('fieldCompletedByManageLabel'),
+    fieldSector: t('fieldSector'),
+    fieldSectorHint: t('fieldSectorHint'),
+    fieldRecordsHeld: t('fieldRecordsHeld'),
+    fieldRecordsHeldHint: t('fieldRecordsHeldHint'),
+    gateKidsLabel: t('gateKidsLabel'),
+    gateKidsHint: t('gateKidsHint'),
+    gateProcLabel: t('gateProcLabel'),
+    gateProcHint: t('gateProcHint'),
+    gateXbtLabel: t('gateXbtLabel'),
+    gateXbtHint: t('gateXbtHint'),
+    gateSensLabel: t('gateSensLabel'),
+    gateSensHint: t('gateSensHint'),
+    scopeSummaryCount: t('scopeSummaryCount'),
+    scopeSummaryAllInScope: t('scopeSummaryAllInScope'),
+    scopeSummaryExcluded: t('scopeSummaryExcluded'),
+    scopeSummaryUnsureNote: t('scopeSummaryUnsureNote'),
+    scopeSummaryConjunction: t('scopeSummaryConjunction'),
+    sdfNoteTitle: t('sdfNoteTitle'),
+    sdfNoteBody: t('sdfNoteBody'),
+    sdfReasonVolume: t('sdfReasonVolume'),
+    sdfReasonSensitivity: t('sdfReasonSensitivity'),
+    sdfReasonChildren: t('sdfReasonChildren'),
+    answerYes: t('answerYes'),
+    answerPartly: t('answerPartly'),
+    answerNo: t('answerNo'),
+    answerNotSure: t('answerNotSure'),
+    tagMustHave: t('tagMustHave'),
+    tagWeight: t('tagWeight'),
+    questionNoteToggle: t('questionNoteToggle'),
+    questionNotePlaceholder: t('questionNotePlaceholder'),
+    domainQuestionCount: t('domainQuestionCount'),
+    domainNotApplicableNote: t('domainNotApplicableNote'),
+  };
+
+  return <AssessmentWizard t={messages} />;
+}

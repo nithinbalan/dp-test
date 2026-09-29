@@ -1,0 +1,235 @@
+/* GENERATED from design-system/theme.json by `pnpm ds:tokens`. Do not edit — edit theme.json. */
+/* Role tokens — the ONLY tokens a component may use. Named for role, not appearance. */
+
+/* Light is the base. Both themes define every role, so nothing can silently
+   keep a light value in dark mode. */
+:root {
+  --s-bg-canvas: oklch(0.9725 0.0067 97.4); /* literal #F7F6F1, not a ramp step */
+  --s-bg-surface: var(--p-neutral-0);
+  --s-bg-raised: var(--p-neutral-0);
+  --s-bg-subtle: var(--p-neutral-100);
+  --s-bg-subtle-hover: var(--p-neutral-200);
+  --s-bg-hover: var(--p-neutral-50);
+  --s-bg-inverse: oklch(0.2427 0.0152 149.2); /* literal #1B221C, not a ramp step */
+  --s-bg-inverse-subtle: oklch(0.2861 0.0178 151.8); /* literal #242D26, not a ramp step */
+  --s-fg-default: var(--p-neutral-950);
+  --s-fg-muted: var(--p-neutral-700);
+  --s-fg-subtle: var(--p-neutral-600);
+  --s-fg-inverse: var(--p-neutral-0);
+  --s-fg-inverse-subtle: oklch(0.6455 0.0305 132); /* literal #87927F, not a ramp step */
+  --s-fg-on-brand: var(--p-neutral-0);
+  --s-fg-on-accent: var(--p-neutral-950);
+  --s-fg-on-danger: var(--p-neutral-0);
+  --s-fg-on-warning: var(--p-neutral-950);
+  --s-border-default: var(--p-neutral-200);
+  --s-border-strong: var(--p-neutral-600);
+  --s-border-inverse: oklch(0.3242 0.0192 157.2); /* literal #2C3730, not a ramp step */
+  --s-border-focus: var(--p-brand-600);
+  --s-brand-solid: var(--p-brand-700);
+  --s-brand-solid-hover: var(--p-brand-800);
+  --s-brand-subtle: var(--p-brand-50);
+  --s-brand-subtle-hover: var(--p-brand-100);
+  --s-brand-fg: var(--p-brand-700);
+  --s-accent-solid: var(--p-accent-300);
+  --s-accent-solid-hover: var(--p-accent-400);
+  --s-accent-subtle: var(--p-accent-50);
+  --s-accent-subtle-hover: var(--p-accent-100);
+  --s-accent-fg: var(--p-accent-800);
+  --s-success-solid: var(--p-success-700);
+  --s-success-subtle: var(--p-success-50);
+  --s-success-subtle-hover: var(--p-success-100);
+  --s-success-fg: var(--p-success-800);
+  --s-warning-solid: var(--p-warning-500);
+  --s-warning-subtle: var(--p-warning-50);
+  --s-warning-subtle-hover: var(--p-warning-100);
+  --s-warning-fg: var(--p-warning-900);
+  --s-danger-solid: var(--p-danger-600);
+  --s-danger-solid-hover: var(--p-danger-700);
+  --s-danger-subtle: var(--p-danger-50);
+  --s-danger-subtle-hover: var(--p-danger-100);
+  --s-danger-fg: var(--p-danger-700);
+  --s-info-solid: var(--p-info-700);
+  --s-info-subtle: var(--p-info-50);
+  --s-info-subtle-hover: var(--p-info-100);
+  --s-info-fg: var(--p-info-700);
+
+  --s-radius-control: var(--p-radius-md);
+  --s-radius-surface: var(--p-radius-lg);
+  --s-radius-pill: var(--p-radius-full);
+  --s-focus-ring-width: 2px;
+  --s-focus-ring-offset: 2px;
+}
+
+/* System preference, unless the user explicitly chose light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --s-bg-canvas: var(--p-neutral-1000);
+    --s-bg-surface: var(--p-neutral-950);
+    --s-bg-raised: var(--p-neutral-900);
+    --s-bg-subtle: var(--p-neutral-900);
+    --s-bg-subtle-hover: var(--p-neutral-800);
+    --s-bg-hover: var(--p-neutral-900);
+    --s-bg-inverse: oklch(0.2427 0.0152 149.2); /* literal #1B221C, not a ramp step */
+    --s-bg-inverse-subtle: oklch(0.2861 0.0178 151.8); /* literal #242D26, not a ramp step */
+    --s-fg-default: var(--p-neutral-50);
+    --s-fg-muted: var(--p-neutral-300);
+    --s-fg-subtle: var(--p-neutral-500);
+    --s-fg-inverse: var(--p-neutral-0);
+    --s-fg-inverse-subtle: oklch(0.6455 0.0305 132); /* literal #87927F, not a ramp step */
+    --s-fg-on-brand: var(--p-neutral-1000);
+    --s-fg-on-accent: var(--p-neutral-950);
+    --s-fg-on-danger: var(--p-neutral-1000);
+    --s-fg-on-warning: var(--p-neutral-1000);
+    --s-border-default: var(--p-neutral-800);
+    --s-border-strong: var(--p-neutral-600);
+    --s-border-inverse: oklch(0.3242 0.0192 157.2); /* literal #2C3730, not a ramp step */
+    --s-border-focus: var(--p-brand-400);
+    --s-brand-solid: var(--p-brand-400);
+    --s-brand-solid-hover: var(--p-brand-300);
+    --s-brand-subtle: var(--p-brand-950);
+    --s-brand-subtle-hover: var(--p-brand-900);
+    --s-brand-fg: var(--p-brand-300);
+    --s-accent-solid: var(--p-accent-300);
+    --s-accent-solid-hover: var(--p-accent-400);
+    --s-accent-subtle: var(--p-accent-950);
+    --s-accent-subtle-hover: var(--p-accent-900);
+    --s-accent-fg: var(--p-accent-300);
+    --s-success-solid: var(--p-success-400);
+    --s-success-subtle: var(--p-success-950);
+    --s-success-subtle-hover: var(--p-success-900);
+    --s-success-fg: var(--p-success-300);
+    --s-warning-solid: var(--p-warning-400);
+    --s-warning-subtle: var(--p-warning-950);
+    --s-warning-subtle-hover: var(--p-warning-900);
+    --s-warning-fg: var(--p-warning-300);
+    --s-danger-solid: var(--p-danger-400);
+    --s-danger-solid-hover: var(--p-danger-300);
+    --s-danger-subtle: var(--p-danger-950);
+    --s-danger-subtle-hover: var(--p-danger-900);
+    --s-danger-fg: var(--p-danger-300);
+    --s-info-solid: var(--p-info-400);
+    --s-info-subtle: var(--p-info-950);
+    --s-info-subtle-hover: var(--p-info-900);
+    --s-info-fg: var(--p-info-300);
+  }
+}
+
+/* Explicit choice wins in both directions. Without this selector a user on a
+   light-preferring OS cannot switch to dark at all. */
+:root[data-theme='dark'] {
+  --s-bg-canvas: var(--p-neutral-1000);
+  --s-bg-surface: var(--p-neutral-950);
+  --s-bg-raised: var(--p-neutral-900);
+  --s-bg-subtle: var(--p-neutral-900);
+  --s-bg-subtle-hover: var(--p-neutral-800);
+  --s-bg-hover: var(--p-neutral-900);
+  --s-bg-inverse: oklch(0.2427 0.0152 149.2); /* literal #1B221C, not a ramp step */
+  --s-bg-inverse-subtle: oklch(0.2861 0.0178 151.8); /* literal #242D26, not a ramp step */
+  --s-fg-default: var(--p-neutral-50);
+  --s-fg-muted: var(--p-neutral-300);
+  --s-fg-subtle: var(--p-neutral-500);
+  --s-fg-inverse: var(--p-neutral-0);
+  --s-fg-inverse-subtle: oklch(0.6455 0.0305 132); /* literal #87927F, not a ramp step */
+  --s-fg-on-brand: var(--p-neutral-1000);
+  --s-fg-on-accent: var(--p-neutral-950);
+  --s-fg-on-danger: var(--p-neutral-1000);
+  --s-fg-on-warning: var(--p-neutral-1000);
+  --s-border-default: var(--p-neutral-800);
+  --s-border-strong: var(--p-neutral-600);
+  --s-border-inverse: oklch(0.3242 0.0192 157.2); /* literal #2C3730, not a ramp step */
+  --s-border-focus: var(--p-brand-400);
+  --s-brand-solid: var(--p-brand-400);
+  --s-brand-solid-hover: var(--p-brand-300);
+  --s-brand-subtle: var(--p-brand-950);
+  --s-brand-subtle-hover: var(--p-brand-900);
+  --s-brand-fg: var(--p-brand-300);
+  --s-accent-solid: var(--p-accent-300);
+  --s-accent-solid-hover: var(--p-accent-400);
+  --s-accent-subtle: var(--p-accent-950);
+  --s-accent-subtle-hover: var(--p-accent-900);
+  --s-accent-fg: var(--p-accent-300);
+  --s-success-solid: var(--p-success-400);
+  --s-success-subtle: var(--p-success-950);
+  --s-success-subtle-hover: var(--p-success-900);
+  --s-success-fg: var(--p-success-300);
+  --s-warning-solid: var(--p-warning-400);
+  --s-warning-subtle: var(--p-warning-950);
+  --s-warning-subtle-hover: var(--p-warning-900);
+  --s-warning-fg: var(--p-warning-300);
+  --s-danger-solid: var(--p-danger-400);
+  --s-danger-solid-hover: var(--p-danger-300);
+  --s-danger-subtle: var(--p-danger-950);
+  --s-danger-subtle-hover: var(--p-danger-900);
+  --s-danger-fg: var(--p-danger-300);
+  --s-info-solid: var(--p-info-400);
+  --s-info-subtle: var(--p-info-950);
+  --s-info-subtle-hover: var(--p-info-900);
+  --s-info-fg: var(--p-info-300);
+}
+
+:root[data-theme='light'] {
+  --s-bg-canvas: oklch(0.9725 0.0067 97.4); /* literal #F7F6F1, not a ramp step */
+  --s-bg-surface: var(--p-neutral-0);
+  --s-bg-raised: var(--p-neutral-0);
+  --s-bg-subtle: var(--p-neutral-100);
+  --s-bg-subtle-hover: var(--p-neutral-200);
+  --s-bg-hover: var(--p-neutral-50);
+  --s-bg-inverse: oklch(0.2427 0.0152 149.2); /* literal #1B221C, not a ramp step */
+  --s-bg-inverse-subtle: oklch(0.2861 0.0178 151.8); /* literal #242D26, not a ramp step */
+  --s-fg-default: var(--p-neutral-950);
+  --s-fg-muted: var(--p-neutral-700);
+  --s-fg-subtle: var(--p-neutral-600);
+  --s-fg-inverse: var(--p-neutral-0);
+  --s-fg-inverse-subtle: oklch(0.6455 0.0305 132); /* literal #87927F, not a ramp step */
+  --s-fg-on-brand: var(--p-neutral-0);
+  --s-fg-on-accent: var(--p-neutral-950);
+  --s-fg-on-danger: var(--p-neutral-0);
+  --s-fg-on-warning: var(--p-neutral-950);
+  --s-border-default: var(--p-neutral-200);
+  --s-border-strong: var(--p-neutral-600);
+  --s-border-inverse: oklch(0.3242 0.0192 157.2); /* literal #2C3730, not a ramp step */
+  --s-border-focus: var(--p-brand-600);
+  --s-brand-solid: var(--p-brand-700);
+  --s-brand-solid-hover: var(--p-brand-800);
+  --s-brand-subtle: var(--p-brand-50);
+  --s-brand-subtle-hover: var(--p-brand-100);
+  --s-brand-fg: var(--p-brand-700);
+  --s-accent-solid: var(--p-accent-300);
+  --s-accent-solid-hover: var(--p-accent-400);
+  --s-accent-subtle: var(--p-accent-50);
+  --s-accent-subtle-hover: var(--p-accent-100);
+  --s-accent-fg: var(--p-accent-800);
+  --s-success-solid: var(--p-success-700);
+  --s-success-subtle: var(--p-success-50);
+  --s-success-subtle-hover: var(--p-success-100);
+  --s-success-fg: var(--p-success-800);
+  --s-warning-solid: var(--p-warning-500);
+  --s-warning-subtle: var(--p-warning-50);
+  --s-warning-subtle-hover: var(--p-warning-100);
+  --s-warning-fg: var(--p-warning-900);
+  --s-danger-solid: var(--p-danger-600);
+  --s-danger-solid-hover: var(--p-danger-700);
+  --s-danger-subtle: var(--p-danger-50);
+  --s-danger-subtle-hover: var(--p-danger-100);
+  --s-danger-fg: var(--p-danger-700);
+  --s-info-solid: var(--p-info-700);
+  --s-info-subtle: var(--p-info-50);
+  --s-info-subtle-hover: var(--p-info-100);
+  --s-info-fg: var(--p-info-700);
+}
+
+/* Let form controls, scrollbars and native UI follow the theme. */
+:root {
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+}

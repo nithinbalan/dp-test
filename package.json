@@ -1,0 +1,103 @@
+{
+  "name": "jethur-dpdp",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "ds:manifest": "node tooling/scripts/build-manifest.mjs",
+    "ds:check": "node tooling/scripts/check-manifest.mjs",
+    "ds:tiers": "node tooling/scripts/check-tiers.mjs",
+    "ds:neighbors": "node tooling/scripts/find-context.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "playwright test",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "node --experimental-strip-types tooling/scripts/migrate.ts",
+    "db:seed": "node --experimental-strip-types tooling/scripts/db-seed.ts",
+    "db:seed:ropa": "node --experimental-strip-types tooling/scripts/seed-ropa-demo.ts",
+    "db:provision": "node --experimental-strip-types tooling/scripts/provision.ts",
+    "db:status": "node --experimental-strip-types tooling/scripts/db-status.ts",
+    "db:check": "node tooling/scripts/check-db-schema.mjs",
+    "verify": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm db:check && pnpm ctx:drift && pnpm ctx:check && pnpm ds:check && pnpm ds:tiers && pnpm ds:rtl && pnpm test",
+    "prepare": "husky",
+    "ctx": "node tooling/scripts/build-tokens.mjs && node tooling/scripts/build-i18n.mjs && node tooling/scripts/build-manifest.mjs && node tooling/scripts/build-context.mjs",
+    "ctx:drift": "node tooling/scripts/build-tokens.mjs --check && node tooling/scripts/build-i18n.mjs --check && node tooling/scripts/build-manifest.mjs --check && node tooling/scripts/build-context.mjs --check",
+    "ctx:check": "node tooling/scripts/check-context.mjs",
+    "ctx:find": "node tooling/scripts/find-context.mjs",
+    "ds:tokens": "node tooling/scripts/build-tokens.mjs",
+    "ds:i18n": "node tooling/scripts/build-i18n.mjs",
+    "ds:rtl": "node tooling/scripts/check-rtl.mjs"
+  },
+  "dependencies": {
+    "@node-rs/argon2": "^2.2.1",
+    "@tabler/icons-react": "^3.46.0",
+    "@tanstack/react-query": "^5.102.8",
+    "drizzle-orm": "^0.45.2",
+    "lucide-react": "^1.37.0",
+    "next": "^15.5.25",
+    "postgres": "^3.4.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@next/eslint-plugin-next": "^15",
+    "@storybook/addon-a11y": "^10.5.10",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/nextjs-vite": "^10.5.10",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tanstack/react-query-devtools": "^5.102.8",
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^5.2.0",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-storybook": "^10.5.10",
+    "globals": "^17.11.0",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "lint-staged": "^15.2.11",
+    "postcss": "^8.5.26",
+    "prettier": "^3.4.2",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "storybook": "^10.5.10",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1",
+    "vite": "^7",
+    "vitest": "^4.1.11"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs,cjs}": [
+      "eslint --max-warnings=0 --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "pnpm": {
+    "overrides": {
+      "postcss": "^8.5.26",
+      "sharp": "^0.35.4"
+    }
+  }
+}

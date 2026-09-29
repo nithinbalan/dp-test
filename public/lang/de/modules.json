@@ -1,0 +1,47 @@
+{
+  "genericEmptyLabel": "Hier ist noch nichts",
+
+  "collectionLabel": "Datenerfassungs-Hub",
+  "collectionRefTag": "JDP-DCH",
+  "collectionDescription": "Keine Erfassungspunkte verbunden. Verbinden Sie eine Quelle, um strukturierte Daten abzurufen.",
+  "collectionCta": "Quelle verbinden",
+  "collectionCaption": "Speist Verarbeitungsverzeichnis & Einwilligungsregister",
+
+  "consentLabel": "Einwilligungsregister",
+  "consentRefTag": "JDP-CNS",
+  "consentDescription": "Das Register ist leer. Sobald ein Erfassungspunkt aktiv ist, wird hier jedes Einwilligungsereignis erfasst — unveränderlich und exportierbar.",
+  "consentCta": "Erfassungspunkt einrichten",
+  "consentCaption": "Unveränderlich · exportierbar",
+
+  "dsrLabel": "Betroffenenanfragen",
+  "dsrRefTag": "JDP-DSR",
+  "dsrDescription": "Noch keine Anfragen. Veröffentlichen Sie ein Intake-Portal oder verbinden Sie ein Postfach, damit betroffene Personen Sie erreichen können.",
+  "dsrCta": "Intake-Portal veröffentlichen",
+  "dsrSecondaryCta": "Postfach verbinden",
+  "dsrCaption": "SLA-Fristen · Identitätsprüfung",
+
+  "breachLabel": "Vorfallmanagement",
+  "breachRefTag": "JDP-BRC",
+  "breachDescription": "Keine Vorfälle — so soll es bleiben. Richten Sie einen Reaktionsplan ein, bevor Sie ihn brauchen.",
+  "breachCta": "Reaktionsplan einrichten",
+  "breachSecondaryCta": "Übung durchführen",
+  "breachCaption": "Vorstandsmeldung innerhalb von 72 Stunden",
+
+  "transfersLabel": "Grenzüberschreitende Übermittlungen",
+  "transfersRefTag": "JDP-XBT",
+  "transfersDescription": "Keine Übermittlungen erfasst. Fügen Sie eine Übermittlung hinzu, um grenzüberschreitende Datenflüsse gemäß §16 zu verfolgen.",
+  "transfersCta": "Übermittlung hinzufügen",
+  "transfersCaption": "Überwacht §16-Meldungen",
+
+  "thirdPartyLabel": "Drittparteirisiko",
+  "thirdPartyRefTag": "JDP-TPR",
+  "thirdPartyDescription": "Noch keine Drittparteien bewertet. Beginnen Sie mit den Anbietern, die mit den meisten personenbezogenen Daten umgehen.",
+  "thirdPartyCta": "Drittpartei bewerten",
+  "thirdPartyCaption": "§8(2)-Vertragsregister",
+
+  "issuesLabel": "Vorfallregister",
+  "issuesRefTag": "JDP-ISS",
+  "issuesDescription": "Keine offenen Vorfälle. Vorfälle erscheinen hier, sobald eine Lückenanalyse, ein Kontrolltest oder eine DPIA etwas findet, das behoben werden muss.",
+  "issuesCta": "Lückenanalyse ausführen",
+  "issuesCaption": "Speist den Dashboard-Score"
+}

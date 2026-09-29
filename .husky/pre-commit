@@ -1,0 +1,4 @@
+# `--concurrent false` is load-bearing, not a preference: the config regenerates
+# derived context and stages it, and parallel task lists would run the --check
+# validators before that regeneration lands. See lint-staged.config.mjs.
+pnpm lint-staged --concurrent false

@@ -1,0 +1,254 @@
+{
+  "$schema": "./theme.schema.json",
+  "note": "THE single source of truth for every visual value. Hand-maintained; this is design policy, not code. `pnpm ds:tokens` generates primitive.css, semantic.css, the Tailwind theme and tokens.ts from it. Never edit those — edit this. To rebrand, change `palettes.brand.hue` (primary) and `palettes.accent.hue` (accent); everything else follows, in BOTH themes, and the contrast gate below fails the build if legibility breaks. EXCEPTION — theme-invariant roles: `bg-inverse`, `bg-inverse-subtle`, `border-inverse`, `fg-inverse`, `fg-inverse-subtle` (the sidebar/auth-panel chrome) and `accent-solid`, `accent-solid-hover` plus their paired `fg-on-accent` are deliberately given the SAME value in both `semantic.light` and `semantic.dark` — light/dark mode is a body-canvas preference (bg-canvas, bg-surface, fg-default, and friends), not a restyle of the product's fixed brand chrome. `brand-solid` stays theme-swapping, unlike `accent-solid`: `fg-on-brand` is shared with `success-solid`/`info-solid` (see `contrast.pairs`), which DO need to keep adapting per theme, so freezing `brand-solid`'s paired text would silently break their legibility in dark mode — giving `brand-solid` its own dedicated paired-text role is a larger, deliberate follow-up, not a value flip here. `brand-subtle`/`accent-subtle` and their paired `brand-fg`/`accent-fg` still swap too: those render as plain text or a tint directly on the swapping canvas, so they must track it for contrast.",
+  "palettes": {
+    "brand": {
+      "hue": 161,
+      "chroma": 0.083,
+      "description": "Primary. Deep forest green. Change this hue to rebrand the product."
+    },
+    "accent": {
+      "hue": 120,
+      "chroma": 0.26,
+      "description": "Accent. Lime highlight used sparingly — active marks, AI affordances, emphasis on dark surfaces. Always carries dark text (fg-on-accent), never white."
+    },
+    "neutral": {
+      "hue": 136,
+      "chroma": 0.017,
+      "description": "Text, surfaces, borders. A forest-green cast (not a true grey) so ink text and inverse surfaces read as the brand's dark forest rather than generic black."
+    },
+    "success": {
+      "hue": 155,
+      "chroma": 0.15
+    },
+    "warning": {
+      "hue": 60,
+      "chroma": 0.15
+    },
+    "danger": {
+      "hue": 33,
+      "chroma": 0.17
+    },
+    "info": {
+      "hue": 256,
+      "chroma": 0.095
+    }
+  },
+  "semantic": {
+    "light": {
+      "bg-canvas": "#F7F6F1",
+      "bg-surface": "neutral-0",
+      "bg-raised": "neutral-0",
+      "bg-subtle": "neutral-100",
+      "bg-subtle-hover": "neutral-200",
+      "bg-hover": "neutral-50",
+      "bg-inverse": "#1B221C",
+      "bg-inverse-subtle": "#242D26",
+      "fg-default": "neutral-950",
+      "fg-muted": "neutral-700",
+      "fg-subtle": "neutral-600",
+      "fg-inverse": "neutral-0",
+      "fg-inverse-subtle": "#87927F",
+      "fg-on-brand": "neutral-0",
+      "fg-on-accent": "neutral-950",
+      "fg-on-danger": "neutral-0",
+      "fg-on-warning": "neutral-950",
+      "border-default": "neutral-200",
+      "border-strong": "neutral-600",
+      "border-inverse": "#2C3730",
+      "border-focus": "brand-600",
+      "brand-solid": "brand-700",
+      "brand-solid-hover": "brand-800",
+      "brand-subtle": "brand-50",
+      "brand-subtle-hover": "brand-100",
+      "brand-fg": "brand-700",
+      "accent-solid": "accent-300",
+      "accent-solid-hover": "accent-400",
+      "accent-subtle": "accent-50",
+      "accent-subtle-hover": "accent-100",
+      "accent-fg": "accent-800",
+      "success-solid": "success-700",
+      "success-subtle": "success-50",
+      "success-subtle-hover": "success-100",
+      "success-fg": "success-800",
+      "warning-solid": "warning-500",
+      "warning-subtle": "warning-50",
+      "warning-subtle-hover": "warning-100",
+      "warning-fg": "warning-900",
+      "danger-solid": "danger-600",
+      "danger-solid-hover": "danger-700",
+      "danger-subtle": "danger-50",
+      "danger-subtle-hover": "danger-100",
+      "danger-fg": "danger-700",
+      "info-solid": "info-700",
+      "info-subtle": "info-50",
+      "info-subtle-hover": "info-100",
+      "info-fg": "info-700"
+    },
+    "dark": {
+      "bg-canvas": "neutral-1000",
+      "bg-surface": "neutral-950",
+      "bg-raised": "neutral-900",
+      "bg-subtle": "neutral-900",
+      "bg-subtle-hover": "neutral-800",
+      "bg-hover": "neutral-900",
+      "bg-inverse": "#1B221C",
+      "bg-inverse-subtle": "#242D26",
+      "fg-default": "neutral-50",
+      "fg-muted": "neutral-300",
+      "fg-subtle": "neutral-500",
+      "fg-inverse": "neutral-0",
+      "fg-inverse-subtle": "#87927F",
+      "fg-on-brand": "neutral-1000",
+      "fg-on-accent": "neutral-950",
+      "fg-on-danger": "neutral-1000",
+      "fg-on-warning": "neutral-1000",
+      "border-default": "neutral-800",
+      "border-strong": "neutral-600",
+      "border-inverse": "#2C3730",
+      "border-focus": "brand-400",
+      "brand-solid": "brand-400",
+      "brand-solid-hover": "brand-300",
+      "brand-subtle": "brand-950",
+      "brand-subtle-hover": "brand-900",
+      "brand-fg": "brand-300",
+      "accent-solid": "accent-300",
+      "accent-solid-hover": "accent-400",
+      "accent-subtle": "accent-950",
+      "accent-subtle-hover": "accent-900",
+      "accent-fg": "accent-300",
+      "success-solid": "success-400",
+      "success-subtle": "success-950",
+      "success-subtle-hover": "success-900",
+      "success-fg": "success-300",
+      "warning-solid": "warning-400",
+      "warning-subtle": "warning-950",
+      "warning-subtle-hover": "warning-900",
+      "warning-fg": "warning-300",
+      "danger-solid": "danger-400",
+      "danger-solid-hover": "danger-300",
+      "danger-subtle": "danger-950",
+      "danger-subtle-hover": "danger-900",
+      "danger-fg": "danger-300",
+      "info-solid": "info-400",
+      "info-subtle": "info-950",
+      "info-subtle-hover": "info-900",
+      "info-fg": "info-300"
+    }
+  },
+  "contrast": {
+    "note": "Checked in BOTH themes by `pnpm ds:tokens --check`. This is what makes changing a hue safe: if a rebrand breaks legibility, the build fails instead of shipping.",
+    "minimums": {
+      "text": 4.5,
+      "largeText": 3,
+      "ui": 3
+    },
+    "pairs": [
+      ["fg-default", "bg-canvas", "text"],
+      ["fg-default", "bg-surface", "text"],
+      ["fg-default", "bg-subtle", "text"],
+      ["fg-default", "bg-hover", "text"],
+      ["fg-muted", "bg-canvas", "text"],
+      ["fg-muted", "bg-surface", "text"],
+      ["fg-muted", "bg-hover", "text"],
+      ["fg-subtle", "bg-canvas", "largeText"],
+      ["fg-inverse", "bg-inverse", "text"],
+      ["fg-on-brand", "brand-solid", "text"],
+      ["fg-on-brand", "brand-solid-hover", "text"],
+      ["fg-on-brand", "success-solid", "text"],
+      ["fg-on-brand", "info-solid", "text"],
+      ["fg-on-accent", "accent-solid", "text"],
+      ["fg-on-accent", "accent-solid-hover", "text"],
+      ["fg-on-warning", "warning-solid", "text"],
+      ["fg-on-danger", "danger-solid", "text"],
+      ["brand-fg", "brand-subtle", "text"],
+      ["brand-fg", "bg-canvas", "text"],
+      ["accent-fg", "accent-subtle", "text"],
+      ["success-fg", "success-subtle", "text"],
+      ["warning-fg", "warning-subtle", "text"],
+      ["danger-fg", "danger-subtle", "text"],
+      ["danger-fg", "bg-canvas", "text"],
+      ["info-fg", "info-subtle", "text"],
+      ["fg-default", "bg-subtle-hover", "text"],
+      ["brand-fg", "brand-subtle-hover", "text"],
+      ["accent-fg", "accent-subtle-hover", "text"],
+      ["success-fg", "success-subtle-hover", "text"],
+      ["warning-fg", "warning-subtle-hover", "text"],
+      ["danger-fg", "danger-subtle-hover", "text"],
+      ["info-fg", "info-subtle-hover", "text"],
+      ["border-strong", "bg-canvas", "ui"],
+      ["border-focus", "bg-canvas", "ui"]
+    ]
+  },
+  "radius": {
+    "none": "0",
+    "xs": "0.25rem",
+    "sm": "0.375rem",
+    "md": "0.625rem",
+    "lg": "0.875rem",
+    "xl": "1rem",
+    "full": "9999px"
+  },
+  "radiusRoles": {
+    "control": "md",
+    "surface": "lg",
+    "pill": "full"
+  },
+  "space": {
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "8": "2rem",
+    "10": "2.5rem",
+    "12": "3rem",
+    "16": "4rem",
+    "20": "5rem"
+  },
+  "fontSize": {
+    "2xs": "0.625rem",
+    "xs": "0.75rem",
+    "sm": "0.8125rem",
+    "md": "0.9375rem",
+    "lg": "1.125rem",
+    "xl": "1.5rem",
+    "2xl": "2.25rem"
+  },
+  "fontWeight": {
+    "regular": "400",
+    "medium": "500",
+    "semibold": "600",
+    "bold": "700"
+  },
+  "fontFamily": {
+    "sans": "var(--font-jethur-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+    "arabic": "var(--font-jethur-arabic), 'Noto Sans Arabic', 'Segoe UI', Tahoma, ui-sans-serif, system-ui, sans-serif",
+    "mono": "var(--font-jethur-mono), ui-monospace, SFMono-Regular, Menlo, monospace"
+  },
+  "lineHeight": {
+    "tight": "1.25",
+    "normal": "1.5",
+    "relaxed": "1.75"
+  },
+  "shadow": {
+    "sm": "0 1px 2px oklch(0 0 0 / 0.06)",
+    "md": "0 4px 12px oklch(0 0 0 / 0.08)",
+    "lg": "0 12px 32px oklch(0 0 0 / 0.12)",
+    "xl": "0 24px 60px oklch(0 0 0 / 0.18)"
+  },
+  "motion": {
+    "duration": {
+      "fast": "120ms",
+      "normal": "200ms",
+      "slow": "320ms"
+    },
+    "ease": {
+      "standard": "cubic-bezier(0.2, 0, 0, 1)",
+      "entrance": "cubic-bezier(0, 0, 0.2, 1)"
+    }
+  },
+  "fontFamilyNote": "The var(--font-jethur-*) hooks are set by next/font in src/shared/lib/fonts.ts, which self-hosts the files. Each stack keeps a full fallback chain, so a missing hook degrades to system fonts rather than to nothing."
+}

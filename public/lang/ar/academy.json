@@ -1,0 +1,23 @@
+{
+  "label": "التوعية بقانون DPDP",
+  "refTag": "JDP-ACD",
+  "description": "تدريب حسب الدور على قانون DPDP، يُتابع حتى الإتمام.",
+  "kpiCourses": "الدورات",
+  "kpiAvgCompletion": "متوسط الإتمام",
+  "kpiOverdue": "موظفون متأخرون",
+  "kpiRequired": "دورات إلزامية",
+  "tableCaption": "الدورات",
+  "tableCourse": "الدورة",
+  "tableAudience": "الفئة المستهدفة",
+  "tableDuration": "المدة",
+  "tableRequired": "إلزامية",
+  "tableCompletion": "الإتمام",
+  "tableActions": "إجراءات",
+  "requiredYes": "إلزامية",
+  "requiredNo": "اختيارية",
+  "durationLabel": "{minutes} دقيقة",
+  "reminderLabel": "إرسال تذكير",
+  "toastReminderSent": "تم إرسال تذكير إلى {count} موظف(ين) لم يكملوا \"{title}\".",
+  "campaignCta": "إرسال تذكير للحملة",
+  "toastCampaignSent": "تم إرسال تذكير إلى كل موظف متأخر."
+}

@@ -1,0 +1,175 @@
+/* GENERATED from design-system/theme.json by `pnpm ds:tokens`. Do not edit — edit theme.json. */
+/* Raw ramps. Never reference these from a component — use semantic.css. */
+
+:root {
+  /* brand — Primary. Deep forest green. Change this hue to rebrand the product. (hue 161) */
+  --p-brand-0: oklch(1 0 0);
+  --p-brand-50: oklch(0.971 0.0116 161);
+  --p-brand-100: oklch(0.94 0.0232 161);
+  --p-brand-200: oklch(0.888 0.0398 161);
+  --p-brand-300: oklch(0.82 0.0564 161);
+  --p-brand-400: oklch(0.74 0.0714 161);
+  --p-brand-500: oklch(0.648 0.083 161);
+  --p-brand-600: oklch(0.57 0.083 161);
+  --p-brand-700: oklch(0.49 0.078 161);
+  --p-brand-800: oklch(0.4 0.0647 161);
+  --p-brand-900: oklch(0.3 0.0481 161);
+  --p-brand-950: oklch(0.213 0.0349 161);
+  --p-brand-1000: oklch(0.13 0.0249 161);
+
+  /* accent — Accent. Lime highlight used sparingly — active marks, AI affordances, emphasis on dark surfaces. Always carries dark text (fg-on-accent), never white. (hue 120) */
+  --p-accent-0: oklch(1 0 0);
+  --p-accent-50: oklch(0.971 0.0364 120);
+  --p-accent-100: oklch(0.94 0.0728 120);
+  --p-accent-200: oklch(0.888 0.1248 120);
+  --p-accent-300: oklch(0.82 0.1768 120);
+  --p-accent-400: oklch(0.74 0.1762 120);
+  --p-accent-500: oklch(0.648 0.1546 120);
+  --p-accent-600: oklch(0.57 0.1363 120);
+  --p-accent-700: oklch(0.49 0.1177 120);
+  --p-accent-800: oklch(0.4 0.097 120);
+  --p-accent-900: oklch(0.3 0.0749 120);
+  --p-accent-950: oklch(0.213 0.0581 120);
+  --p-accent-1000: oklch(0.13 0.0572 120);
+
+  /* neutral — Text, surfaces, borders. A forest-green cast (not a true grey) so ink text and inverse surfaces read as the brand's dark forest rather than generic black. (hue 136) */
+  --p-neutral-0: oklch(1 0 0);
+  --p-neutral-50: oklch(0.971 0.0024 136);
+  --p-neutral-100: oklch(0.94 0.0048 136);
+  --p-neutral-200: oklch(0.888 0.0082 136);
+  --p-neutral-300: oklch(0.82 0.0116 136);
+  --p-neutral-400: oklch(0.74 0.0146 136);
+  --p-neutral-500: oklch(0.648 0.017 136);
+  --p-neutral-600: oklch(0.57 0.017 136);
+  --p-neutral-700: oklch(0.49 0.016 136);
+  --p-neutral-800: oklch(0.4 0.0133 136);
+  --p-neutral-900: oklch(0.3 0.0099 136);
+  --p-neutral-950: oklch(0.213 0.0071 136);
+  --p-neutral-1000: oklch(0.13 0.0051 136);
+
+  /* success (hue 155) */
+  --p-success-0: oklch(1 0 0);
+  --p-success-50: oklch(0.971 0.021 155);
+  --p-success-100: oklch(0.94 0.042 155);
+  --p-success-200: oklch(0.888 0.072 155);
+  --p-success-300: oklch(0.82 0.102 155);
+  --p-success-400: oklch(0.74 0.129 155);
+  --p-success-500: oklch(0.648 0.15 155);
+  --p-success-600: oklch(0.57 0.1417 155);
+  --p-success-700: oklch(0.49 0.1222 155);
+  --p-success-800: oklch(0.4 0.1005 155);
+  --p-success-900: oklch(0.3 0.077 155);
+  --p-success-950: oklch(0.213 0.0584 155);
+  --p-success-1000: oklch(0.13 0.045 155);
+
+  /* warning (hue 60) */
+  --p-warning-0: oklch(1 0 0);
+  --p-warning-50: oklch(0.971 0.018 60);
+  --p-warning-100: oklch(0.94 0.0379 60);
+  --p-warning-200: oklch(0.888 0.072 60);
+  --p-warning-300: oklch(0.82 0.102 60);
+  --p-warning-400: oklch(0.74 0.129 60);
+  --p-warning-500: oklch(0.648 0.15 60);
+  --p-warning-600: oklch(0.57 0.1347 60);
+  --p-warning-700: oklch(0.49 0.1163 60);
+  --p-warning-800: oklch(0.4 0.0959 60);
+  --p-warning-900: oklch(0.3 0.0742 60);
+  --p-warning-950: oklch(0.213 0.0579 60);
+  --p-warning-1000: oklch(0.13 0.045 60);
+
+  /* danger (hue 33) */
+  --p-danger-0: oklch(1 0 0);
+  --p-danger-50: oklch(0.971 0.0145 33);
+  --p-danger-100: oklch(0.94 0.0307 33);
+  --p-danger-200: oklch(0.888 0.0598 33);
+  --p-danger-300: oklch(0.82 0.1023 33);
+  --p-danger-400: oklch(0.74 0.1462 33);
+  --p-danger-500: oklch(0.648 0.17 33);
+  --p-danger-600: oklch(0.57 0.17 33);
+  --p-danger-700: oklch(0.49 0.1598 33);
+  --p-danger-800: oklch(0.4 0.1326 33);
+  --p-danger-900: oklch(0.3 0.0986 33);
+  --p-danger-950: oklch(0.213 0.0714 33);
+  --p-danger-1000: oklch(0.13 0.051 33);
+
+  /* info (hue 256) */
+  --p-info-0: oklch(1 0 0);
+  --p-info-50: oklch(0.971 0.0133 256);
+  --p-info-100: oklch(0.94 0.0266 256);
+  --p-info-200: oklch(0.888 0.0456 256);
+  --p-info-300: oklch(0.82 0.0646 256);
+  --p-info-400: oklch(0.74 0.0817 256);
+  --p-info-500: oklch(0.648 0.095 256);
+  --p-info-600: oklch(0.57 0.095 256);
+  --p-info-700: oklch(0.49 0.0893 256);
+  --p-info-800: oklch(0.4 0.0741 256);
+  --p-info-900: oklch(0.3 0.0551 256);
+  --p-info-950: oklch(0.213 0.0399 256);
+  --p-info-1000: oklch(0.13 0.0285 256);
+
+  /* radius */
+  --p-radius-none: 0;
+  --p-radius-xs: 0.25rem;
+  --p-radius-sm: 0.375rem;
+  --p-radius-md: 0.625rem;
+  --p-radius-lg: 0.875rem;
+  --p-radius-xl: 1rem;
+  --p-radius-full: 9999px;
+
+  /* space */
+  --p-space-0: 0;
+  --p-space-1: 0.25rem;
+  --p-space-2: 0.5rem;
+  --p-space-3: 0.75rem;
+  --p-space-4: 1rem;
+  --p-space-5: 1.25rem;
+  --p-space-6: 1.5rem;
+  --p-space-8: 2rem;
+  --p-space-10: 2.5rem;
+  --p-space-12: 3rem;
+  --p-space-16: 4rem;
+  --p-space-20: 5rem;
+
+  /* font-family */
+  --p-font-family-sans:
+    var(--font-jethur-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --p-font-family-arabic:
+    var(--font-jethur-arabic), 'Noto Sans Arabic', 'Segoe UI', Tahoma, ui-sans-serif, system-ui,
+    sans-serif;
+  --p-font-family-mono: var(--font-jethur-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* font-size */
+  --p-font-size-2xs: 0.625rem;
+  --p-font-size-xs: 0.75rem;
+  --p-font-size-sm: 0.8125rem;
+  --p-font-size-md: 0.9375rem;
+  --p-font-size-lg: 1.125rem;
+  --p-font-size-xl: 1.5rem;
+  --p-font-size-2xl: 2.25rem;
+
+  /* font-weight */
+  --p-font-weight-regular: 400;
+  --p-font-weight-medium: 500;
+  --p-font-weight-semibold: 600;
+  --p-font-weight-bold: 700;
+
+  /* line-height */
+  --p-line-height-tight: 1.25;
+  --p-line-height-normal: 1.5;
+  --p-line-height-relaxed: 1.75;
+
+  /* shadow */
+  --p-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.06);
+  --p-shadow-md: 0 4px 12px oklch(0 0 0 / 0.08);
+  --p-shadow-lg: 0 12px 32px oklch(0 0 0 / 0.12);
+  --p-shadow-xl: 0 24px 60px oklch(0 0 0 / 0.18);
+
+  /* duration */
+  --p-duration-fast: 120ms;
+  --p-duration-normal: 200ms;
+  --p-duration-slow: 320ms;
+
+  /* ease */
+  --p-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --p-ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+}

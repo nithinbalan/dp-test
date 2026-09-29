@@ -1,0 +1,65 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "noEmit": true,
+    // tooling/scripts/*.ts run under `node --experimental-strip-types`, which resolves
+    // imports at runtime and therefore requires the literal `.ts` extension.
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@templates/*": ["src/components/templates/*"],
+      "@shared/*": ["src/shared/*"],
+      "@shared/types": ["src/shared/types/index.ts"],
+      "@shared/hooks": ["src/shared/hooks/index.ts"],
+      "@shared/lib": ["src/shared/lib/index.ts"],
+      "@shared/config": ["src/shared/config/index.ts"],
+      "@server/*": ["src/server/*"],
+      "@api/*": ["src/app/api/*"],
+      "@styles/*": ["src/styles/*"],
+      "@design-system/*": ["design-system/*"],
+      "@public/*": ["public/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".next-test-pages/types/**/*.ts",
+    ".next/types/**/*.ts",
+    ".storybook/**/*.ts",
+    // Matches the isolated `distDir` src/test/integration/pages.test.ts builds into
+    // (see next.config.ts's `NEXT_DIST_DIR`), so that build never needs to rewrite
+    // this file to add it — `next build` reformats the whole file when it does.
+    "next-env.d.ts",
+    ".next-test-pages2/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".next", "storybook-static"]
+}

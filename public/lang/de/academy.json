@@ -1,0 +1,23 @@
+{
+  "label": "DPDP-Sensibilisierung",
+  "refTag": "JDP-ACD",
+  "description": "Rollenbasierte Schulung zum DPDP Act, bis zum Abschluss verfolgt.",
+  "kpiCourses": "Kurse",
+  "kpiAvgCompletion": "Durchschnittlicher Abschluss",
+  "kpiOverdue": "Überfällige Mitarbeitende",
+  "kpiRequired": "Pflichtkurse",
+  "tableCaption": "Kurse",
+  "tableCourse": "Kurs",
+  "tableAudience": "Zielgruppe",
+  "tableDuration": "Dauer",
+  "tableRequired": "Pflicht",
+  "tableCompletion": "Abschluss",
+  "tableActions": "Aktionen",
+  "requiredYes": "Pflicht",
+  "requiredNo": "Optional",
+  "durationLabel": "{minutes} Min.",
+  "reminderLabel": "Erinnerung senden",
+  "toastReminderSent": "Erinnerung an {count} Mitarbeitende gesendet, die „{title}“ noch nicht abgeschlossen haben.",
+  "campaignCta": "Kampagnenerinnerung senden",
+  "toastCampaignSent": "Erinnerung an alle überfälligen Mitarbeitenden gesendet."
+}

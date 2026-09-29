@@ -1,0 +1,16 @@
+{
+  "label": "Jethur AI",
+  "refTag": "JDP-AI",
+  "description": "Ask about the DPDP Act, or about what Jethur has found in your workspace.",
+  "assistantName": "Jethur AI",
+  "inputLabel": "Ask Jethur AI",
+  "inputPlaceholder": "Ask a question about the DPDP Act…",
+  "sendLabel": "Send",
+  "respondingLabel": "Jethur AI is answering…",
+  "welcomeMessage": "Ask me about notice, consent, breach timelines, DPIA, retention, rights, or penalties under the DPDP Act.",
+  "suggestion1": "What counts as a personal data breach?",
+  "suggestion2": "How does consent withdrawal work?",
+  "suggestion3": "When is a DPIA required?",
+  "suggestion4": "What has to happen within 72 hours of a breach?",
+  "disclaimer": "Answers are drawn from a fixed knowledge base for this preview and are not legal advice."
+}

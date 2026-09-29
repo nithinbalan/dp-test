@@ -1,0 +1,23 @@
+{
+  "label": "DPDP Awareness",
+  "refTag": "JDP-ACD",
+  "description": "Role-based training on the DPDP Act, tracked to completion.",
+  "kpiCourses": "Courses",
+  "kpiAvgCompletion": "Average completion",
+  "kpiOverdue": "Employees overdue",
+  "kpiRequired": "Required courses",
+  "tableCaption": "Courses",
+  "tableCourse": "Course",
+  "tableAudience": "Audience",
+  "tableDuration": "Duration",
+  "tableRequired": "Required",
+  "tableCompletion": "Completion",
+  "tableActions": "Actions",
+  "requiredYes": "Required",
+  "requiredNo": "Optional",
+  "durationLabel": "{minutes} min",
+  "reminderLabel": "Send reminder",
+  "toastReminderSent": "Reminder sent to {count} employee(s) who haven't completed \"{title}\".",
+  "campaignCta": "Send campaign reminder",
+  "toastCampaignSent": "Reminder sent to every overdue employee."
+}

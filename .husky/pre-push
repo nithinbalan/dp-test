@@ -1,0 +1,2 @@
+# Full gate before anything leaves the machine. See docs/DEFINITION_OF_DONE.md.
+pnpm verify

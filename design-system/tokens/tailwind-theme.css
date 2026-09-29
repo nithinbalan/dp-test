@@ -1,0 +1,109 @@
+/* GENERATED from design-system/theme.json by `pnpm ds:tokens`. Do not edit — edit theme.json. */
+/* Tailwind v4 theme, mapped onto SEMANTIC tokens only. */
+
+/* This mapping is what makes `bg-brand-solid` legal and `bg-[#3b82f6]`
+   unnecessary — and therefore what makes the token lint rules enforceable
+   rather than merely annoying. */
+@theme inline {
+  --color-bg-canvas: var(--s-bg-canvas);
+  --color-bg-surface: var(--s-bg-surface);
+  --color-bg-raised: var(--s-bg-raised);
+  --color-bg-subtle: var(--s-bg-subtle);
+  --color-bg-subtle-hover: var(--s-bg-subtle-hover);
+  --color-bg-hover: var(--s-bg-hover);
+  --color-bg-inverse: var(--s-bg-inverse);
+  --color-bg-inverse-subtle: var(--s-bg-inverse-subtle);
+  --color-fg-default: var(--s-fg-default);
+  --color-fg-muted: var(--s-fg-muted);
+  --color-fg-subtle: var(--s-fg-subtle);
+  --color-fg-inverse: var(--s-fg-inverse);
+  --color-fg-inverse-subtle: var(--s-fg-inverse-subtle);
+  --color-fg-on-brand: var(--s-fg-on-brand);
+  --color-fg-on-accent: var(--s-fg-on-accent);
+  --color-fg-on-danger: var(--s-fg-on-danger);
+  --color-fg-on-warning: var(--s-fg-on-warning);
+  --color-border-default: var(--s-border-default);
+  --color-border-strong: var(--s-border-strong);
+  --color-border-inverse: var(--s-border-inverse);
+  --color-border-focus: var(--s-border-focus);
+  --color-brand-solid: var(--s-brand-solid);
+  --color-brand-solid-hover: var(--s-brand-solid-hover);
+  --color-brand-subtle: var(--s-brand-subtle);
+  --color-brand-subtle-hover: var(--s-brand-subtle-hover);
+  --color-brand-fg: var(--s-brand-fg);
+  --color-accent-solid: var(--s-accent-solid);
+  --color-accent-solid-hover: var(--s-accent-solid-hover);
+  --color-accent-subtle: var(--s-accent-subtle);
+  --color-accent-subtle-hover: var(--s-accent-subtle-hover);
+  --color-accent-fg: var(--s-accent-fg);
+  --color-success-solid: var(--s-success-solid);
+  --color-success-subtle: var(--s-success-subtle);
+  --color-success-subtle-hover: var(--s-success-subtle-hover);
+  --color-success-fg: var(--s-success-fg);
+  --color-warning-solid: var(--s-warning-solid);
+  --color-warning-subtle: var(--s-warning-subtle);
+  --color-warning-subtle-hover: var(--s-warning-subtle-hover);
+  --color-warning-fg: var(--s-warning-fg);
+  --color-danger-solid: var(--s-danger-solid);
+  --color-danger-solid-hover: var(--s-danger-solid-hover);
+  --color-danger-subtle: var(--s-danger-subtle);
+  --color-danger-subtle-hover: var(--s-danger-subtle-hover);
+  --color-danger-fg: var(--s-danger-fg);
+  --color-info-solid: var(--s-info-solid);
+  --color-info-subtle: var(--s-info-subtle);
+  --color-info-subtle-hover: var(--s-info-subtle-hover);
+  --color-info-fg: var(--s-info-fg);
+
+  --radius-control: var(--s-radius-control);
+  --radius-surface: var(--s-radius-surface);
+  --radius-pill: var(--s-radius-pill);
+  --radius-none: var(--p-radius-none);
+  --radius-xs: var(--p-radius-xs);
+  --radius-sm: var(--p-radius-sm);
+  --radius-md: var(--p-radius-md);
+  --radius-lg: var(--p-radius-lg);
+  --radius-xl: var(--p-radius-xl);
+  --radius-full: var(--p-radius-full);
+
+  /* Tailwind derives every p-N/m-N/gap-N from this base, and 0.25rem is exactly
+     the step our space scale uses — so the two cannot diverge. */
+  --spacing: 0.25rem;
+
+  /* Bound to --s-font-family, which locale.css swaps per :lang(). */
+  --font-sans: var(--s-font-family);
+  --font-sans: var(--p-font-family-sans);
+  --font-arabic: var(--p-font-family-arabic);
+  --font-mono: var(--p-font-family-mono);
+
+  --text-2xs: var(--p-font-size-2xs);
+  --text-xs: var(--p-font-size-xs);
+  --text-sm: var(--p-font-size-sm);
+  --text-md: var(--p-font-size-md);
+  --text-lg: var(--p-font-size-lg);
+  --text-xl: var(--p-font-size-xl);
+  --text-2xl: var(--p-font-size-2xl);
+  --font-weight-regular: var(--p-font-weight-regular);
+  --font-weight-medium: var(--p-font-weight-medium);
+  --font-weight-semibold: var(--p-font-weight-semibold);
+  --font-weight-bold: var(--p-font-weight-bold);
+  --shadow-sm: var(--p-shadow-sm);
+  --shadow-md: var(--p-shadow-md);
+  --shadow-lg: var(--p-shadow-lg);
+  --shadow-xl: var(--p-shadow-xl);
+
+  --ease-standard: var(--p-ease-standard);
+  --ease-entrance: var(--p-ease-entrance);
+}
+
+/* Tailwind v4 has no `duration` theme namespace — `duration-fast` would silently
+   generate nothing. Custom utilities give us named, token-backed durations without
+   resorting to arbitrary values, which the token lint rules ban. */
+@utility duration-fast {
+  transition-duration: var(--p-duration-fast);
+}
+@utility duration-normal {
+  transition-duration: var(--p-duration-normal);
+}
+@utility duration-slow {
+  transition-duration: var(--p-duration-slow);
+}

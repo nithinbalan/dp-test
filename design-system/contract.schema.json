@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Component API Contract",
+  "description": "The single hand-maintained source for the component prop vocabulary. Policy, not derivable from code. Projected into manifest.json, the tables in docs/COMPONENT_CONTRACT.md, and every generation prompt.",
+  "type": "object",
+  "required": ["reservedProps", "bannedPropNames", "booleanPrefixes", "tiers", "tierRules"],
+  "properties": {
+    "note": { "type": "string" },
+    "reservedProps": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["type", "meaning"],
+        "properties": {
+          "type": { "type": "string" },
+          "meaning": { "type": "string" },
+          "default": { "type": "string" }
+        }
+      }
+    },
+    "bannedPropNames": { "type": "array", "items": { "type": "string" } },
+    "bannedPropNotes": { "type": "object", "additionalProperties": { "type": "string" } },
+    "booleanPrefixes": { "type": "array", "items": { "type": "string" } },
+    "tiers": { "type": "array", "items": { "type": "string" } },
+    "tierRules": { "type": "object" },
+    "valueRules": { "type": "object" },
+    "requiredFiles": { "type": "array", "items": { "type": "string" } }
+  }
+}

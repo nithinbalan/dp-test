@@ -1,0 +1,36 @@
+/** Page-local — copy for the Endpoints view, resolved server-side in page.tsx. */
+export type EndpointsMessages = {
+  kpiDevices: string;
+  kpiAgentsActive: string;
+  kpiAgentsActiveDescription: string;
+  kpiWithFindings: string;
+  kpiPending: string;
+  searchPlaceholder: string;
+  filterAll: string;
+  filterActive: string;
+  filterPending: string;
+  filterFindings: string;
+  sendLinksCta: string;
+  tableCaption: string;
+  tableEmployee: string;
+  tableDevice: string;
+  tableOs: string;
+  tableAgent: string;
+  tableFindings: string;
+  tableLastScan: string;
+  tableActions: string;
+  noFindings: string;
+  piiFound: string;
+  agentActive: string;
+  agentOutdated: string;
+  agentNotInstalled: string;
+  scanLabel: string;
+  pushUpdateLabel: string;
+  sendInstallLabel: string;
+  toastScanStarted: string;
+  toastUpdatePushed: string;
+  toastInstallSent: string;
+  toastBulkInstallSent: string;
+  paginationSummary: string;
+  pageSizeLabel: string;
+};

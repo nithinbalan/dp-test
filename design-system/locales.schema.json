@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Supported locales",
+  "description": "Single source of truth for locales and writing direction. Projected into src/shared/types/locale.ts and design-system/tokens/locale.css by `pnpm ds:i18n`.",
+  "type": "object",
+  "required": ["defaultLocale", "locales"],
+  "properties": {
+    "note": { "type": "string" },
+    "defaultLocale": { "type": "string" },
+    "locales": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "nativeName", "dir", "fontFamily", "numberingSystem"],
+        "properties": {
+          "name": { "type": "string" },
+          "nativeName": { "type": "string" },
+          "dir": { "enum": ["ltr", "rtl"] },
+          "fontFamily": { "type": "string", "description": "Must exist in theme.json fontFamily" },
+          "numberingSystem": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "required": ["strategy", "cookieName", "headerName", "prefixDefaultLocale"],
+      "properties": {
+        "strategy": { "enum": ["path", "cookie", "header"] },
+        "note": { "type": "string" },
+        "cookieName": { "type": "string" },
+        "headerName": {
+          "type": "string",
+          "description": "Request header middleware forwards the resolved locale on, for the same request's Server Components to read before any Set-Cookie reaches the browser."
+        },
+        "prefixDefaultLocale": { "type": "boolean" }
+      }
+    }
+  }
+}
