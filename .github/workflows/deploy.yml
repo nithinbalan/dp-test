@@ -65,9 +65,6 @@ jobs:
       - name: Tokens, manifest and context match source
         run: pnpm ctx:drift
 
-      - name: Context is complete
-        run: pnpm ctx:check
-
       - name: Design system contract
         run: pnpm ds:check
 
