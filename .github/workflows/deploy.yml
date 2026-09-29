@@ -165,7 +165,7 @@ jobs:
             DATABASE_URL=postgres://postgres:postgres@localhost:5432/dpdp_dev_db
             APP_BASE_DOMAIN=localhost:3000
             AUTH_SECRET=ci_only_secret_at_least_32_characters_long
-          
+
           tags: |
             ghcr.io/${{ github.repository_owner }}/dpdp-app:${{ github.sha }}
             ghcr.io/${{ github.repository_owner }}/dpdp-app:latest
