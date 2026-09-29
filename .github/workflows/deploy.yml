@@ -1,0 +1,198 @@
+name: dpdp-dev-deployment
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+
+  # ============================================================
+  # CI / Verification
+  # ============================================================
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: dpdp_dev_db
+        options: >-
+          --health-cmd "pg_isready -U postgres -d dpdp_dev_db"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - "5432:5432"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Tokens, manifest and context match source
+        run: pnpm ctx:drift
+
+      - name: Context is complete
+        run: pnpm ctx:check
+
+      - name: Design system contract
+        run: pnpm ds:check
+
+      - name: Design system structure
+        run: pnpm ds:tiers
+
+      - name: RTL safety
+        run: pnpm ds:rtl
+
+      - name: Tests
+        run: pnpm test
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/dpdp_dev_db
+          DATABASE_MIGRATION_URL: postgres://postgres:postgres@localhost:5432/dpdp_dev_db
+
+      - name: Build
+        run: pnpm build
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/dpdp_dev_db
+          APP_BASE_DOMAIN: localhost:3000
+          AUTH_SECRET: ci_only_secret_at_least_32_characters_long
+
+
+  # ============================================================
+  # Dependency Audit
+  # ============================================================
+  audit:
+    name: Dependency Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Audit production dependencies
+        run: pnpm audit --audit-level high --prod
+
+      - name: Audit development dependencies
+        run: pnpm audit --audit-level high --dev || true
+
+
+  # ============================================================
+  # Docker Build + GHCR Publish
+  #
+  # Runs ONLY after verify + audit succeed.
+  # Runs ONLY for pushes to main.
+  #
+  # Pull requests do NOT publish images.
+  # ============================================================
+  docker:
+    name: Build and Publish Docker Images
+
+    needs:
+      - verify
+      - audit
+
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ----------------------------------------------------------
+      # GHCR Login
+      # ----------------------------------------------------------
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # ----------------------------------------------------------
+      # Docker Buildx
+      # ----------------------------------------------------------
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # ----------------------------------------------------------
+      # Application Image
+      # ----------------------------------------------------------
+      - name: Build and push application image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/dpdp-app:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/dpdp-app:latest
+
+          cache-from: type=gha,scope=dpdp-app
+          cache-to: type=gha,mode=max,scope=dpdp-app
+
+      # ----------------------------------------------------------
+      # Migration Image
+      # ----------------------------------------------------------
+      - name: Build and push migration image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile.migration
+          push: true
+
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/dpdp-migration:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/dpdp-migration:latest
+
+          cache-from: type=gha,scope=dpdp-migration
+          cache-to: type=gha,mode=max,scope=dpdp-migration
