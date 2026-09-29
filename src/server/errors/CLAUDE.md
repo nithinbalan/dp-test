@@ -7,7 +7,21 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol           | Kind      | Layer  | Description                                                                                 |
+| ---------------- | --------- | ------ | ------------------------------------------------------------------------------------------- |
+| `AppError`       | Class     | module | The only throwable in this codebase.                                                        |
+| `AppErrorInit`   | TypeAlias | module | Construction shape for {@link AppError}.                                                    |
+| `ERROR_CODES`    | Variable  | module | The closed error-code union. Adding a code is deliberate: it gets an HTTP                   |
+| `ErrorCode`      | TypeAlias | module | Every failure the system can name. Closed on purpose: an error that is not in               |
+| `errorResponse`  | Function  | module | Formats an error or error code into a standard JSON HTTP response with appropriate          |
+| `isAppError`     | Variable  | module | Type guard for a caught `unknown`. Prefer {@link toAppError} unless you only need the test. |
+| `statusFor`      | Variable  | module | HTTP status for a code. Used by the boundary handler; never chosen ad hoc.                  |
+| `toAppError`     | Function  | module | Narrow an `unknown` catch binding into an AppError. This is the ONLY sanctioned             |
+| `userMessageFor` | Variable  | module | The safe, human-facing message for a code. This — never `error.message` — is what           |
+
+```ts
+import { AppError, AppErrorInit, ERROR_CODES, ErrorCode } from '@server/errors';
+```
 
 ## Decisions that constrain this code
 

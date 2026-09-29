@@ -7,7 +7,88 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol                     | Kind      | Layer      | Description                                                                                        |
+| -------------------------- | --------- | ---------- | -------------------------------------------------------------------------------------------------- |
+| `AnswerRow`                | TypeAlias | repository | —                                                                                                  |
+| `AnswerValue`              | TypeAlias | service    | —                                                                                                  |
+| `AssessmentProfile`        | TypeAlias | service    | —                                                                                                  |
+| `AssessmentReport`         | TypeAlias | service    | —                                                                                                  |
+| `completeRun`              | Function  | repository | —                                                                                                  |
+| `countAnswersForQuestion`  | Function  | repository | How many answers already recorded against this question — a non-zero                               |
+| `countQuestionsInDomain`   | Function  | repository | How many questions this domain already owns — a non-zero count is why                              |
+| `createDomain`             | Function  | service    | Adds a new, empty section to the workspace's Gap Assessment questionnaire —                        |
+| `CreateDomainError`        | TypeAlias | service    | —                                                                                                  |
+| `createQuestion`           | Function  | service    | Adds a new, admin-authored question to a section — the piece that makes a                          |
+| `CreateQuestionError`      | TypeAlias | service    | —                                                                                                  |
+| `deleteDomain`             | Function  | repository | —                                                                                                  |
+| `DeleteDomainError`        | TypeAlias | service    | —                                                                                                  |
+| `deleteQuestion`           | Function  | repository | —                                                                                                  |
+| `DeleteQuestionError`      | TypeAlias | service    | —                                                                                                  |
+| `DomainListRow`            | TypeAlias | repository | —                                                                                                  |
+| `DomainResult`             | TypeAlias | service    | —                                                                                                  |
+| `DomainRow`                | TypeAlias | repository | —                                                                                                  |
+| `DomainScoreRow`           | TypeAlias | repository | —                                                                                                  |
+| `DomainScoreValues`        | TypeAlias | repository | —                                                                                                  |
+| `employeeExists`           | Function  | repository | Whether an employee id names a live employee in THIS workspace — same check                        |
+| `findActiveRun`            | Function  | repository | —                                                                                                  |
+| `findDomainById`           | Function  | repository | One domain by id, or null — used to confirm it exists before rename/delete.                        |
+| `findGapQuestionnaire`     | Function  | repository | Only one questionnaire of kind `'gap'` is expected per workspace — the                             |
+| `findLatestCompletedRun`   | Function  | repository | —                                                                                                  |
+| `findQuestionById`         | Function  | repository | One question by id, or null — used to confirm it exists before rename/delete.                      |
+| `findRun`                  | Function  | repository | —                                                                                                  |
+| `finishAssessment`         | Function  | service    | Finalizes a run: computes the score/domain snapshot and marks it completed.                        |
+| `Gap`                      | TypeAlias | service    | —                                                                                                  |
+| `GapSeverity`              | TypeAlias | service    | —                                                                                                  |
+| `GateAnswer`               | TypeAlias | service    | —                                                                                                  |
+| `getDomainsForSettings`    | Function  | service    | Every section with its question count — Configuration Studio's Master                              |
+| `getQuestionsForDomain`    | Function  | service    | Every question in one section, in position order — Configuration Studio's                          |
+| `getReadiness`             | Function  | service    | Current catalog + whichever state the hub should render — empty, resumable, or a completed report. |
+| `insertDomain`             | Function  | repository | Appends a new domain after every existing one — a freshly added section                            |
+| `insertQuestion`           | Function  | repository | Appends a new, admin-authored question to a domain (`is_custom = true`,                            |
+| `insertRun`                | Function  | repository | —                                                                                                  |
+| `listAnswers`              | Function  | repository | —                                                                                                  |
+| `listDomainKeys`           | Function  | repository | Every domain key already taken in this questionnaire — so a new one can be                         |
+| `listDomains`              | Function  | repository | Active domains only — one an admin deactivates in Configuration Studio's                           |
+| `listDomainScores`         | Function  | repository | —                                                                                                  |
+| `listDomainScores`         | Function  | repository | —                                                                                                  |
+| `listDomainsForSettings`   | Function  | repository | Every domain with how many questions it owns — Configuration Studio's                              |
+| `listQuestionCodes`        | Function  | repository | Every question code already taken in this questionnaire — codes are                                |
+| `listQuestions`            | Function  | repository | Questions from active domains only. `question` carries no `is_active` of                           |
+| `listQuestionsForDomain`   | Function  | repository | Every question in one domain, in position order — the section's own                                |
+| `MasterQuestionRow`        | TypeAlias | repository | —                                                                                                  |
+| `NewRunValues`             | TypeAlias | repository | —                                                                                                  |
+| `nextAssessmentRunCode`    | Function  | repository | `next_ref('GAP')` — the same per-workspace counter every other human-facing id uses.               |
+| `QuestionInput`            | TypeAlias | service    | —                                                                                                  |
+| `QuestionnaireRow`         | TypeAlias | repository | The one published Gap Assessment questionnaire this workspace runs.                                |
+| `QuestionRow`              | TypeAlias | repository | —                                                                                                  |
+| `ReadinessCatalogDomain`   | TypeAlias | service    | —                                                                                                  |
+| `ReadinessCatalogQuestion` | TypeAlias | service    | —                                                                                                  |
+| `ReadinessData`            | TypeAlias | service    | —                                                                                                  |
+| `ReadinessMutationError`   | TypeAlias | service    | —                                                                                                  |
+| `ReadinessState`           | TypeAlias | service    | —                                                                                                  |
+| `reassess`                 | Function  | service    | Re-opens the profile step of the latest completed run's replacement — starts                       |
+| `removeDomain`             | Function  | service    | Deletes a section. Refuses while it still owns any question — removing                             |
+| `removeQuestion`           | Function  | service    | Deletes a question. Refuses once any run has answered it — that answer is                          |
+| `renameDomain`             | Function  | repository | Renames a domain and sets its active flag (its display name and status                             |
+| `replaceDomainScores`      | Function  | repository | —                                                                                                  |
+| `RunRow`                   | TypeAlias | repository | —                                                                                                  |
+| `scoreBand`                | Function  | service    | `gaBand()` — the four readiness bands, verbatim headline/body copy from the prototype.             |
+| `ScoreBand`                | TypeAlias | service    | —                                                                                                  |
+| `ScoreBandKey`             | TypeAlias | service    | —                                                                                                  |
+| `startAssessment`          | Function  | service    | Starts a fresh run — "Start assessment" from the empty state. Rejected if                          |
+| `updateDomain`             | Function  | service    | Renames a section and sets its active flag. The internal key never                                 |
+| `UpdateDomainError`        | TypeAlias | service    | —                                                                                                  |
+| `updateQuestion`           | Function  | repository | Updates a question's editable fields. `code`/`domainId` never change —                             |
+| `updateQuestionDetails`    | Function  | service    | Updates a question's editable fields. Its code and section never move —                            |
+| `UpdateQuestionError`      | TypeAlias | service    | —                                                                                                  |
+| `updateRun`                | Function  | service    | Saves a profile patch and/or one answer to the run in progress.                                    |
+| `UpdateRunInput`           | TypeAlias | service    | —                                                                                                  |
+| `updateRunProfile`         | Function  | repository | —                                                                                                  |
+| `upsertAnswer`             | Function  | repository | —                                                                                                  |
+
+```ts
+import { AnswerRow, AnswerValue, AssessmentProfile, AssessmentReport } from '@api/readiness';
+```
 
 ## Decisions that constrain this code
 

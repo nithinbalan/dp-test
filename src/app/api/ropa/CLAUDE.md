@@ -7,7 +7,49 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol                      | Kind      | Layer      | Description                                                                                   |
+| --------------------------- | --------- | ---------- | --------------------------------------------------------------------------------------------- |
+| `ActivityCoreValues`        | TypeAlias | repository | The values needed to create — or fully overwrite on edit — one activity's core row.           |
+| `ActivityDetail`            | TypeAlias | service    | One activity's full record — the detail view and the edit wizard's prefill both read this.    |
+| `ActivityListRow`           | TypeAlias | repository | One row of the RoPA register — the list `/ropa` reads.                                        |
+| `ActivityRow`               | TypeAlias | repository | One activity by id (not deleted), with every statutory column.                                |
+| `ActivitySummary`           | TypeAlias | service    | One row of the RoPA register — the list `/ropa` reads.                                        |
+| `ActivityWizardInput`       | TypeAlias | service    | What the wizard submits — its own `AddActivityState` shape, unmodified.                       |
+| `approveActivity`           | Function  | service    | Approves an activity — the owner is recorded as the approver (no separate reviewer role yet). |
+| `ApproveActivityError`      | TypeAlias | service    | —                                                                                             |
+| `approveActivityRow`        | Function  | repository | Marks an activity approved.                                                                   |
+| `basisFromDb`               | Function  | module     | Falls back to `consent` for a DB value the wizard doesn't offer (e.g. `court_order`) —        |
+| `basisToDb`                 | Function  | module     | —                                                                                             |
+| `collectionSourceLabel`     | Function  | module     | —                                                                                             |
+| `createActivity`            | Function  | service    | Creates a new activity — always a human draft awaiting first review.                          |
+| `CreateActivityError`       | TypeAlias | service    | —                                                                                             |
+| `crossBorderLabel`          | Function  | module     | The two cross-border wizard keys → the free-text sentence the detail view shows.              |
+| `findActivityById`          | Function  | repository | —                                                                                             |
+| `getActivities`             | Function  | service    | The register's rows for the RoPA page — one query per satellite table, joined in memory.      |
+| `getActivity`               | Function  | service    | One activity's full record, or `NOT_FOUND`.                                                   |
+| `insertActivity`            | Function  | repository | Inserts a new activity and returns its id.                                                    |
+| `isUiLawfulBasis`           | Function  | module     | Narrows a request-body string to the wizard's six basis keys — the request-body               |
+| `listActivities`            | Function  | repository | Every non-deleted activity, newest first.                                                     |
+| `listActivityCategories`    | Function  | repository | One activity's identifier-type keys.                                                          |
+| `listActivityOperations`    | Function  | repository | One activity's processing operations.                                                         |
+| `listActivitySafeguards`    | Function  | repository | One activity's security safeguards.                                                           |
+| `listAllActivityCategories` | Function  | repository | Every identifier-type key tagged on every activity, for the list's per-row chips.             |
+| `nextActivityRefCode`       | Function  | repository | Allocates the next human-facing ref via `ref_sequence`/`next_ref()`.                          |
+| `operationFromDb`           | Function  | module     | Title-cases a lowercase DB operation back for display (`storage` → `Storage`).                |
+| `operationsToDb`            | Function  | module     | —                                                                                             |
+| `principalTypeToLabel`      | Function  | module     | —                                                                                             |
+| `replaceActivityCategories` | Function  | repository | Overwrites the full set of identifier-type tags for one activity — delete then insert.        |
+| `replaceActivityOperations` | Function  | repository | Overwrites the full set of processing operations for one activity — delete then insert.       |
+| `replaceActivitySafeguards` | Function  | repository | Overwrites the full set of security safeguards for one activity — delete then insert.         |
+| `retentionToDb`             | Function  | module     | —                                                                                             |
+| `statusFromDb`              | Function  | module     | Maps `processing_activity.status`/`drafted_by` onto the UI's three-state badge.               |
+| `updateActivity`            | Function  | service    | Overwrites an activity and reopens it for review — see this file's header.                    |
+| `updateActivityCore`        | Function  | repository | Overwrites an activity's statutory + custom fields and resets it to                           |
+| `UpdateActivityError`       | TypeAlias | service    | —                                                                                             |
+
+```ts
+import { ActivityCoreValues, ActivityDetail, ActivityListRow, ActivityRow } from '@api/ropa';
+```
 
 ## Decisions that constrain this code
 

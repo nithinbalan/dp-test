@@ -7,7 +7,32 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol                       | Kind      | Layer      | Description                                                                     |
+| ---------------------------- | --------- | ---------- | ------------------------------------------------------------------------------- |
+| `countEmployeesInDepartment` | Function  | repository | How many live employees currently sit in this department — a non-zero           |
+| `createDepartment`           | Function  | service    | Creates a department. Rejects a blank or duplicate (case-sensitive) name.       |
+| `CreateDepartmentError`      | TypeAlias | service    | —                                                                               |
+| `deleteDepartment`           | Function  | repository | —                                                                               |
+| `DeleteDepartmentError`      | TypeAlias | service    | —                                                                               |
+| `DepartmentRow`              | TypeAlias | repository | —                                                                               |
+| `findDepartmentById`         | Function  | repository | One department by id, or null — used to confirm it exists before rename/delete. |
+| `findDepartmentByName`       | Function  | repository | One department by (case-sensitive) name, or null.                               |
+| `getDepartments`             | Function  | service    | Every department in the workspace, alphabetically.                              |
+| `insertDepartment`           | Function  | repository | Creates a department and returns it.                                            |
+| `listDepartments`            | Function  | repository | Every department, alphabetically — the order a picker should list them in.      |
+| `removeDepartment`           | Function  | service    | Deletes a department. Refuses while any live employee still sits in it —        |
+| `renameDepartment`           | Function  | repository | Renames a department, sets its active flag, and returns the updated row.        |
+| `updateDepartment`           | Function  | service    | Renames a department and sets its active flag. Rejects a blank name, an         |
+| `UpdateDepartmentError`      | TypeAlias | service    | —                                                                               |
+
+```ts
+import {
+  countEmployeesInDepartment,
+  createDepartment,
+  CreateDepartmentError,
+  deleteDepartment,
+} from '@api/departments';
+```
 
 ## Decisions that constrain this code
 

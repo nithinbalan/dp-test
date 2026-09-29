@@ -7,7 +7,37 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol                       | Kind      | Layer   | Description                                                                            |
+| ---------------------------- | --------- | ------- | -------------------------------------------------------------------------------------- |
+| `AccessControlData`          | TypeAlias | service | —                                                                                      |
+| `AccessControlModule`        | TypeAlias | service | One module row as the panel renders it.                                                |
+| `AccessControlMutationError` | TypeAlias | service | —                                                                                      |
+| `AccessControlRole`          | TypeAlias | service | One role as the panel renders it.                                                      |
+| `BASE_LANGUAGE_CODE`         | Variable  | service | The base language, always enabled. s.5(3) lets a data principal read in English or     |
+| `createRole`                 | Function  | service | Creates a custom (never system, never locked) role.                                    |
+| `CreateRoleInput`            | TypeAlias | service | —                                                                                      |
+| `duplicateRole`              | Function  | service | Duplicates an existing role verbatim (permissions included) under a new name.          |
+| `getAccessControl`           | Function  | service | Current catalog + every role, resolved to the level the panel renders.                 |
+| `getWorkspaceSettings`       | Function  | service | Current workspace settings for the Configuration Studio "Workspace" panel.             |
+| `PermissionLevel`            | TypeAlias | service | —                                                                                      |
+| `renameRole`                 | Function  | service | Renames a role. Locked roles (Admin) may not be renamed either.                        |
+| `saveWorkspaceSettings`      | Function  | service | Saves the panel's fields and returns the settings as they now stand.                   |
+| `SaveWorkspaceSettingsError` | TypeAlias | service | Why a save was refused. Each maps to an error code at the route boundary.              |
+| `setAllPermissions`          | Function  | service | Sets every module to the same level for one role — the panel's "Set all" quick action. |
+| `setRolePermission`          | Function  | service | Sets one module's level for one role. Rejected server-side — not just                  |
+| `WORKSPACE_SECTORS`          | Variable  | service | Sectors a workspace may declare. Closed here on purpose: `public.sector` is            |
+| `WorkspaceSector`            | TypeAlias | service | One selectable sector.                                                                 |
+| `WorkspaceSettings`          | TypeAlias | service | What the Workspace panel renders.                                                      |
+| `WorkspaceSettingsInput`     | TypeAlias | service | The fields the panel may change. Everything else on the profile is out of scope.       |
+
+```ts
+import {
+  AccessControlData,
+  AccessControlModule,
+  AccessControlMutationError,
+  AccessControlRole,
+} from '@api/settings';
+```
 
 ## Decisions that constrain this code
 

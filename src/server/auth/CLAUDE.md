@@ -7,7 +7,34 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol                     | Kind      | Layer   | Description                                                                             |
+| -------------------------- | --------- | ------- | --------------------------------------------------------------------------------------- |
+| `getSessionToken`          | Function  | module  | The raw session token carried by a request, if any. Unverified until `validateSession`. |
+| `requestPasswordReset`     | Function  | module  | Initiates the password recovery flow by generating and dispatching a 6-digit OTP code.  |
+| `resetPassword`            | Function  | module  | Resets password using a validated reset token, invalidating all sessions for the user.  |
+| `resolveWorkspaceContext`  | Function  | module  | Validates the session token and mints the unforgeable WorkspaceContext                  |
+| `SESSION_COOKIE_NAME`      | Variable  | module  | Name of the session cookie. Uses __Host- prefix in production with HTTPS.               |
+| `SessionValidationSuccess` | TypeAlias | module  | Authenticated session validation outcome.                                               |
+| `SignInInput`              | TypeAlias | module  | Credentials and context parameters for sign-in.                                         |
+| `SignInSuccess`            | TypeAlias | module  | Successful sign-in outcome with session token and workspace context.                    |
+| `signInWithPassword`       | Function  | service | Signs in with identifier (email or phone) and password, pinned to a workspace.          |
+| `signOut`                  | Function  | service | Signs out by revoking the session.                                                      |
+| `switchActiveWorkspace`    | Function  | service | Sets the workspace a session falls back to when the request host names none.            |
+| `toWorkspaceSummary`       | Function  | service | The client-safe view of a workspace: everything but the schema name.                    |
+| `UserProfile`              | TypeAlias | module  | Public user profile information.                                                        |
+| `validateSession`          | Function  | service | Validates an incoming session token, returning the user and active workspace.           |
+| `verifyResetCode`          | Function  | module  | Verifies a 6-digit recovery OTP code, returning a short-lived reset token on success.   |
+| `WorkspaceInfo`            | TypeAlias | module  | Active workspace context and schema information.                                        |
+| `WorkspaceSummary`         | TypeAlias | module  | Summary descriptor for an authorized workspace.                                         |
+
+```ts
+import {
+  getSessionToken,
+  requestPasswordReset,
+  resetPassword,
+  resolveWorkspaceContext,
+} from '@server/auth';
+```
 
 ## Decisions that constrain this code
 

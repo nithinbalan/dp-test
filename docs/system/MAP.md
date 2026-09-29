@@ -9,18 +9,18 @@ lives, then read that thing's own context file — not this whole page.
 
 | Domain                                                        | Purpose                                                                                   | Public API | Depends on                        | Context |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------- | --------------------------------- | ------- |
-| [`@server/auth`](../../src/server/auth/CLAUDE.md)             | Establishing who the actor is, and which workspaces they are a member of. It produces the | 0          | db, errors, workspace             | yes     |
-| [`@server/db`](../../src/server/db/CLAUDE.md)                 | Owning the raw Postgres connection, and being the only place that is allowed to.          | 0          | —                                 | yes     |
-| [`@server/errors`](../../src/server/errors/CLAUDE.md)         | Making every failure classifiable, so a boundary can respond correctly without reading    | 0          | —                                 | yes     |
-| [`@server/http`](../../src/server/http/CLAUDE.md)             | The one shape every Route Handler has. `defineRoute` owns what is identical for every     | 0          | errors                            | yes     |
-| [`@server/workspace`](../../src/server/workspace/CLAUDE.md)   | Turning an untrusted request into proof that exactly one workspace may be touched, and    | 0          | db, errors                        | yes     |
+| [`@server/auth`](../../src/server/auth/CLAUDE.md)             | Establishing who the actor is, and which workspaces they are a member of. It produces the | 17         | db, errors, workspace             | yes     |
+| [`@server/db`](../../src/server/db/CLAUDE.md)                 | Owning the raw Postgres connection, and being the only place that is allowed to.          | 59         | —                                 | yes     |
+| [`@server/errors`](../../src/server/errors/CLAUDE.md)         | Making every failure classifiable, so a boundary can respond correctly without reading    | 9          | —                                 | yes     |
+| [`@server/http`](../../src/server/http/CLAUDE.md)             | The one shape every Route Handler has. `defineRoute` owns what is identical for every     | 4          | errors                            | yes     |
+| [`@server/workspace`](../../src/server/workspace/CLAUDE.md)   | Turning an untrusted request into proof that exactly one workspace may be touched, and    | 10         | db, errors                        | yes     |
 | [`@api/auth`](../../src/app/api/auth/CLAUDE.md)               | The HTTP surface of authentication: sign-in, sign-out, session, workspace switch, and     | 0          | errors, http, workspace           | yes     |
-| [`@api/departments`](../../src/app/api/departments/CLAUDE.md) | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 0          | auth, db, errors, http, workspace | yes     |
-| [`@api/employees`](../../src/app/api/employees/CLAUDE.md)     | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 0          | auth, db, errors, http, workspace | yes     |
-| [`@api/notices`](../../src/app/api/notices/CLAUDE.md)         | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 0          | auth, db, errors, http, workspace | yes     |
-| [`@api/readiness`](../../src/app/api/readiness/CLAUDE.md)     | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 0          | auth, db, errors, http, workspace | yes     |
-| [`@api/ropa`](../../src/app/api/ropa/CLAUDE.md)               | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 0          | auth, db, errors, http, workspace | yes     |
-| [`@api/settings`](../../src/app/api/settings/CLAUDE.md)       | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 0          | auth, db, errors, http, workspace | yes     |
+| [`@api/departments`](../../src/app/api/departments/CLAUDE.md) | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 15         | auth, db, errors, http, workspace | yes     |
+| [`@api/employees`](../../src/app/api/employees/CLAUDE.md)     | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 26         | auth, db, errors, http, workspace | yes     |
+| [`@api/notices`](../../src/app/api/notices/CLAUDE.md)         | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 65         | auth, db, errors, http, workspace | yes     |
+| [`@api/readiness`](../../src/app/api/readiness/CLAUDE.md)     | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 76         | auth, db, errors, http, workspace | yes     |
+| [`@api/ropa`](../../src/app/api/ropa/CLAUDE.md)               | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 37         | auth, db, errors, http, workspace | yes     |
+| [`@api/settings`](../../src/app/api/settings/CLAUDE.md)       | <!-- HUMAN-OWNED. Explain the WHY: the business problem, the invariants that are not      | 20         | auth, db, errors, http, workspace | yes     |
 
 Each domain's own `CLAUDE.md` loads automatically when you work in its folder.
 
@@ -34,10 +34,79 @@ Search across tiers: `pnpm ctx "<what you want to build>"`
 
 See [adr/index.md](../adr/index.md). Each is back-linked from the code it constrains.
 
-## Routes (0)
+## Routes (69)
 
-| Path | Kind | File |
-| ---- | ---- | ---- |
+| Path                                                                       | Kind      | File                                                                             |
+| -------------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------- |
+| `/`                                                                        | layout    | `src/app/(app)/layout.tsx`                                                       |
+| `/academy`                                                                 | page      | `src/app/(app)/academy/page.tsx`                                                 |
+| `/actions`                                                                 | page      | `src/app/(app)/actions/page.tsx`                                                 |
+| `/ai`                                                                      | page      | `src/app/(app)/ai/page.tsx`                                                      |
+| `/api/auth/forgot-password/request`                                        | route     | `src/app/api/auth/forgot-password/request/route.ts`                              |
+| `/api/auth/forgot-password/reset`                                          | route     | `src/app/api/auth/forgot-password/reset/route.ts`                                |
+| `/api/auth/forgot-password/verify`                                         | route     | `src/app/api/auth/forgot-password/verify/route.ts`                               |
+| `/api/auth/login`                                                          | route     | `src/app/api/auth/login/route.ts`                                                |
+| `/api/auth/logout`                                                         | route     | `src/app/api/auth/logout/route.ts`                                               |
+| `/api/auth/session`                                                        | route     | `src/app/api/auth/session/route.ts`                                              |
+| `/api/auth/workspace/switch`                                               | route     | `src/app/api/auth/workspace/switch/route.ts`                                     |
+| `/api/departments`                                                         | route     | `src/app/api/departments/route.ts`                                               |
+| `/api/departments/[id]` (dynamic)                                          | route     | `src/app/api/departments/[id]/route.ts`                                          |
+| `/api/employees`                                                           | route     | `src/app/api/employees/route.ts`                                                 |
+| `/api/employees/import`                                                    | route     | `src/app/api/employees/import/route.ts`                                          |
+| `/api/notices`                                                             | route     | `src/app/api/notices/route.ts`                                                   |
+| `/api/notices/[id]` (dynamic)                                              | route     | `src/app/api/notices/[id]/route.ts`                                              |
+| `/api/notices/[id]/publish` (dynamic)                                      | route     | `src/app/api/notices/[id]/publish/route.ts`                                      |
+| `/api/readiness`                                                           | route     | `src/app/api/readiness/route.ts`                                                 |
+| `/api/readiness/[runId]` (dynamic)                                         | route     | `src/app/api/readiness/[runId]/route.ts`                                         |
+| `/api/readiness/[runId]/finish` (dynamic)                                  | route     | `src/app/api/readiness/[runId]/finish/route.ts`                                  |
+| `/api/readiness/master-data/domains`                                       | route     | `src/app/api/readiness/master-data/domains/route.ts`                             |
+| `/api/readiness/master-data/domains/[id]` (dynamic)                        | route     | `src/app/api/readiness/master-data/domains/[id]/route.ts`                        |
+| `/api/readiness/master-data/domains/[id]/questions` (dynamic)              | route     | `src/app/api/readiness/master-data/domains/[id]/questions/route.ts`              |
+| `/api/readiness/master-data/domains/[id]/questions/[questionId]` (dynamic) | route     | `src/app/api/readiness/master-data/domains/[id]/questions/[questionId]/route.ts` |
+| `/api/ropa`                                                                | route     | `src/app/api/ropa/route.ts`                                                      |
+| `/api/ropa/[id]` (dynamic)                                                 | route     | `src/app/api/ropa/[id]/route.ts`                                                 |
+| `/api/ropa/[id]/approve` (dynamic)                                         | route     | `src/app/api/ropa/[id]/approve/route.ts`                                         |
+| `/api/settings/access-control`                                             | route     | `src/app/api/settings/access-control/route.ts`                                   |
+| `/api/settings/workspace`                                                  | route     | `src/app/api/settings/workspace/route.ts`                                        |
+| `/api/settings/workspace/logo`                                             | route     | `src/app/api/settings/workspace/logo/route.ts`                                   |
+| `/api/settings/workspace/logo/[attachmentId]` (dynamic)                    | route     | `src/app/api/settings/workspace/logo/[attachmentId]/route.ts`                    |
+| `/breach`                                                                  | page      | `src/app/(app)/breach/page.tsx`                                                  |
+| `/collection`                                                              | page      | `src/app/(app)/collection/page.tsx`                                              |
+| `/consent`                                                                 | page      | `src/app/(app)/consent/page.tsx`                                                 |
+| `/controls`                                                                | page      | `src/app/(app)/controls/page.tsx`                                                |
+| `/controls/[id]` (dynamic)                                                 | page      | `src/app/(app)/controls/[id]/page.tsx`                                           |
+| `/dashboard`                                                               | page      | `src/app/(app)/dashboard/page.tsx`                                               |
+| `/data-map`                                                                | page      | `src/app/(app)/data-map/page.tsx`                                                |
+| `/data-sources`                                                            | page      | `src/app/(app)/data-sources/page.tsx`                                            |
+| `/data-sources/[id]` (dynamic)                                             | page      | `src/app/(app)/data-sources/[id]/page.tsx`                                       |
+| `/data-sources/add`                                                        | page      | `src/app/(app)/data-sources/add/page.tsx`                                        |
+| `/dpia`                                                                    | page      | `src/app/(app)/dpia/page.tsx`                                                    |
+| `/dpia/[id]` (dynamic)                                                     | page      | `src/app/(app)/dpia/[id]/page.tsx`                                               |
+| `/dsr`                                                                     | page      | `src/app/(app)/dsr/page.tsx`                                                     |
+| `/employees`                                                               | page      | `src/app/(app)/employees/page.tsx`                                               |
+| `/endpoints`                                                               | page      | `src/app/(app)/endpoints/page.tsx`                                               |
+| `/error.tsx`                                                               | error     | `src/app/error.tsx`                                                              |
+| `/issues`                                                                  | page      | `src/app/(app)/issues/page.tsx`                                                  |
+| `/layout.tsx`                                                              | layout    | `src/app/layout.tsx`                                                             |
+| `/login`                                                                   | page      | `src/app/(auth)/login/page.tsx`                                                  |
+| `/not-found.tsx`                                                           | not-found | `src/app/not-found.tsx`                                                          |
+| `/notices`                                                                 | page      | `src/app/(app)/notices/page.tsx`                                                 |
+| `/notices/[id]` (dynamic)                                                  | page      | `src/app/(app)/notices/[id]/page.tsx`                                            |
+| `/notices/[id]/preview` (dynamic)                                          | page      | `src/app/(app)/notices/[id]/preview/page.tsx`                                    |
+| `/notices/new`                                                             | page      | `src/app/(app)/notices/new/page.tsx`                                             |
+| `/page.tsx`                                                                | page      | `src/app/page.tsx`                                                               |
+| `/readiness`                                                               | page      | `src/app/(app)/readiness/page.tsx`                                               |
+| `/readiness/assessment`                                                    | page      | `src/app/(app)/readiness/assessment/page.tsx`                                    |
+| `/risks`                                                                   | page      | `src/app/(app)/risks/page.tsx`                                                   |
+| `/risks/[id]` (dynamic)                                                    | page      | `src/app/(app)/risks/[id]/page.tsx`                                              |
+| `/ropa`                                                                    | page      | `src/app/(app)/ropa/page.tsx`                                                    |
+| `/ropa/[id]` (dynamic)                                                     | page      | `src/app/(app)/ropa/[id]/page.tsx`                                               |
+| `/ropa/[id]/edit` (dynamic)                                                | page      | `src/app/(app)/ropa/[id]/edit/page.tsx`                                          |
+| `/ropa/add`                                                                | page      | `src/app/(app)/ropa/add/page.tsx`                                                |
+| `/ropa/generate`                                                           | page      | `src/app/(app)/ropa/generate/page.tsx`                                           |
+| `/settings`                                                                | page      | `src/app/(app)/settings/page.tsx`                                                |
+| `/third-party`                                                             | page      | `src/app/(app)/third-party/page.tsx`                                             |
+| `/transfers`                                                               | page      | `src/app/(app)/transfers/page.tsx`                                               |
 
 ## Error codes (17)
 

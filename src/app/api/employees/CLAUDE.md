@@ -7,7 +7,43 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol                     | Kind      | Layer      | Description                                                                          |
+| -------------------------- | --------- | ---------- | ------------------------------------------------------------------------------------ |
+| `AgentConnectionStatus`    | TypeAlias | service    | Connection status the "Device & agent" column renders.                               |
+| `AwarenessStatus`          | TypeAlias | service    | Awareness status the "Awareness" column renders.                                     |
+| `createEmployee`           | Function  | service    | Creates a new employee. `workEmail` and `department`/`designation` are optional in   |
+| `CreateEmployeeError`      | TypeAlias | service    | Why a create was refused.                                                            |
+| `EmployeeListRow`          | TypeAlias | repository | One employee row, joined with its department name and device/awareness state.        |
+| `EmployeeRow`              | TypeAlias | service    | One row of the Employees table.                                                      |
+| `EmployeesData`            | TypeAlias | service    | What the Employees page renders: the roster plus its KPI row.                        |
+| `findDepartmentByName`     | Function  | repository | One department by (case-sensitive) name, or null.                                    |
+| `findEmployeeByWorkEmail`  | Function  | repository | Whether a work email is already used by a live employee — `work_email` has no UNIQUE |
+| `getEmployees`             | Function  | service    | Current roster and KPIs for the Employees page.                                      |
+| `ImportEmployeesError`     | TypeAlias | service    | Why the whole file was refused — no row was even attempted.                          |
+| `importEmployeesFromCsv`   | Function  | service    | Parses, validates, and bulk-inserts a CSV of employees. Every row that fails         |
+| `ImportEmployeesSummary`   | TypeAlias | service    | What the Import dialog renders after a CSV is submitted.                             |
+| `ImportRowSkip`            | TypeAlias | service    | One skipped row, 1-indexed against the file (row 1 is the header).                   |
+| `ImportRowSkipReason`      | TypeAlias | service    | Why one row of the CSV was not imported.                                             |
+| `insertDepartment`         | Function  | repository | Creates a department and returns its id — used when the submitted name is new.       |
+| `insertEmployee`           | Function  | repository | Inserts a new employee and returns its id.                                           |
+| `insertEmployeesBulk`      | Function  | repository | Inserts every row of a CSV import in one statement, returning how many landed.       |
+| `listEmployees`            | Function  | repository | Every non-deleted employee, with department name and (at most one) device.           |
+| `listExistingWorkEmails`   | Function  | repository | Every work email already in use by a live employee, in ONE query — the CSV           |
+| `listMandatoryEnrollments` | Function  | repository | Every mandatory-course enrollment for every employee, in one query (no N+1).         |
+| `MandatoryEnrollmentRow`   | TypeAlias | repository | One employee's mandatory-course enrollments — the awareness aggregation's raw input. |
+| `NewEmployeeInput`         | TypeAlias | service    | The fields the "Add Employee" form may submit. Only `fullName` is required.          |
+| `NewEmployeeValues`        | TypeAlias | repository | The values needed to create one employee row.                                        |
+| `nextEmployeeCode`         | Function  | repository | Allocates the next human-facing employee code via `ref_sequence`/`next_ref()`        |
+| `parseCsv`                 | Function  | module     | —                                                                                    |
+
+```ts
+import {
+  AgentConnectionStatus,
+  AwarenessStatus,
+  createEmployee,
+  CreateEmployeeError,
+} from '@api/employees';
+```
 
 ## Decisions that constrain this code
 

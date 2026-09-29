@@ -7,7 +7,16 @@
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol          | Kind      | Layer  | Description                                                                             |
+| --------------- | --------- | ------ | --------------------------------------------------------------------------------------- |
+| `dataResponse`  | Function  | module | The standard success envelope: `{ data }`.                                              |
+| `defineRoute`   | Function  | module | Wraps a route body with the ingress/egress plumbing described above. The returned       |
+| `parseJsonBody` | Function  | module | Reads and validates a JSON body. A body that is not JSON, or does not match the         |
+| `RouteContext`  | TypeAlias | module | What a route body receives. `params` is Next's dynamic-segment promise, passed through. |
+
+```ts
+import { dataResponse, defineRoute, parseJsonBody, RouteContext } from '@server/http';
+```
 
 ## Decisions that constrain this code
 

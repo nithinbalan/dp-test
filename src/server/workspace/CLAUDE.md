@@ -14,7 +14,27 @@ and changing that rule requires an ADR.
 
 ## Public API
 
-_No exported symbols yet._
+| Symbol                         | Kind      | Layer     | Description                                                                           |
+| ------------------------------ | --------- | --------- | ------------------------------------------------------------------------------------- |
+| `assertWorkspaceScope`         | Function  | isolation | Fails loudly rather than defaulting — an unscoped query must never "just work".       |
+| `isValidWorkspaceSlug`         | Function  | isolation | Shape + reservation check for a workspace slug, applied at creation time.             |
+| `RESERVED_SLUGS`               | Variable  | isolation | Slugs that would collide with infrastructure hostnames or Postgres internals.         |
+| `resolveWorkspaceSlugFromHost` | Function  | isolation | Extracts and shape-validates the workspace slug from a `Host` header under the        |
+| `withWorkspace`                | Function  | isolation | Runs `fn` inside a transaction pinned to exactly one workspace's schema. **The only   |
+| `WORKSPACE_ROLES`              | Variable  | isolation | Membership roles, most privileged first. Authorization compares against these.        |
+| `WORKSPACE_SLUG_PATTERN`       | Variable  | isolation | Slug rules — see docs/WORKSPACE_ISOLATION.md §3. Reserved names rejected at creation. |
+| `WorkspaceContext`             | TypeAlias | isolation | Unforgeable proof that a workspace was resolved AND the actor was authorized for it.  |
+| `WorkspaceRole`                | TypeAlias | isolation | A single membership role.                                                             |
+| `WorkspaceTx`                  | TypeAlias | isolation | Opaque handle to one workspace's data. Repositories accept ONLY this — never a pool   |
+
+```ts
+import {
+  assertWorkspaceScope,
+  isValidWorkspaceSlug,
+  RESERVED_SLUGS,
+  resolveWorkspaceSlugFromHost,
+} from '@server/workspace';
+```
 
 ## Decisions that constrain this code
 
