@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - main
-
   pull_request:
-
   workflow_dispatch:
 
 concurrency:
@@ -18,7 +16,6 @@ permissions:
   packages: write
 
 jobs:
-
   # ============================================================
   # CI / Verification
   # ============================================================
@@ -93,7 +90,6 @@ jobs:
           APP_BASE_DOMAIN: localhost:3000
           AUTH_SECRET: ci_only_secret_at_least_32_characters_long
 
-
   # ============================================================
   # Dependency Audit
   # ============================================================
@@ -123,24 +119,19 @@ jobs:
       - name: Audit development dependencies
         run: pnpm audit --audit-level high --dev || true
 
-
   # ============================================================
   # Docker Build + GHCR Publish
   #
-  # Runs ONLY after verify + audit succeed.
-  # Runs ONLY for pushes to main.
-  #
-  # Pull requests do NOT publish images.
+  # Runs only after verify and audit succeed.
+  # Runs only for pushes to main.
+  # Pull requests do not publish images.
   # ============================================================
   docker:
     name: Build and Publish Docker Images
-
     needs:
       - verify
       - audit
-
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
     runs-on: ubuntu-latest
 
     steps:
@@ -172,11 +163,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-
           tags: |
             ghcr.io/${{ github.repository_owner }}/dpdp-app:${{ github.sha }}
             ghcr.io/${{ github.repository_owner }}/dpdp-app:latest
-
           cache-from: type=gha,scope=dpdp-app
           cache-to: type=gha,mode=max,scope=dpdp-app
 
@@ -189,10 +178,8 @@ jobs:
           context: .
           file: ./Dockerfile.migration
           push: true
-
           tags: |
             ghcr.io/${{ github.repository_owner }}/dpdp-migration:${{ github.sha }}
             ghcr.io/${{ github.repository_owner }}/dpdp-migration:latest
-
           cache-from: type=gha,scope=dpdp-migration
           cache-to: type=gha,mode=max,scope=dpdp-migration
